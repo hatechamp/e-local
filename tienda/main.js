@@ -1,9 +1,10 @@
 //vrde.club
+
 var app = new Vue({
     el: '#app',
     data: {
         search: "",
-        price: 55,
+        price: 50,
         discounts: discounts,
         productList: products,
         cartTotal: 0,
@@ -28,27 +29,21 @@ var app = new Vue({
             fruit: false,
             meal: false
         }
+
     },
     methods: {
         getTotal: function () {
+
             var self = this;
             this.cartTotal = 0;
             this.cartItems = 0;
+
             this.cart = this.productList.filter(function (item) {
                 return item.total > 0;
             });
-            for (var item in this.cart) {
-                if (this.cart[item].type == 'veggie')
-                    this.cartItems += this.cart[item].amount;
-            }
+
             
-            // add discount by tier
-            if (this.cartItems <= 1) { this.price = 55 }
-            else if (this.cartItems == 2) { this.price = 52.50 }
-            else if (this.cartItems == 3) { this.price = 50 }
-            else if (this.cartItems == 4) { this.price = 47.50 }
-            else if (this.cartItems >= 5 && this.cartItems) { this.price = 45 }
-            
+
             for (var item in this.cart) {
                 if (this.cart[item].type == 'fruit') {
                     this.cart[item].total = this.cart[item].amount * this.cart[item].price;
@@ -64,10 +59,12 @@ var app = new Vue({
                     this.cart[item].total = this.cart[item].amount * this.cart[item].price;
                     this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
                     this.cartHas.meal = true;
+
                 }
                 this.cartTotal += this.cart[item].total;
                 this.cartTotal = parseFloat(this.cartTotal.toFixed(2))
             }
+
         },
         addItem: function (item) {
             item.amount++;
@@ -80,12 +77,14 @@ var app = new Vue({
         },
         removeItem: function (item) {
             this.getTotal();
+
             if (item.amount > 0) {
                 item.amount--;
             }
             if (item.price && item.type != "veggie") {
                 item.total = item.amount * item.price;
             } else {
+                console.log("Remove Item", this.price, item.price)
                 item.price = this.price;
                 item.total = item.amount * this.price;
             }
@@ -106,13 +105,16 @@ var app = new Vue({
             // form validation
             if (this.userData.name == "" || this.userData.phone == "") {
                 this.fieldsMissing = true;
+                console.log(this.fieldsMissing)
             }
             if (this.userData.delivery == true && this.userData.address == "") {
                 this.fieldsMissing = true;
+                console.log(this.fieldsMissing)
             }
             else {
                 this.fieldsMissing = false;
             }
+
             if (this.fieldsMissing == false) {
 
                 // send to firebase
@@ -142,6 +144,7 @@ var app = new Vue({
                 }
 
                 var self = this;
+
                 database.ref('sales/' + today).push(sale, function (error) {
                     if (error) {
                         console.log(error)
@@ -157,6 +160,7 @@ var app = new Vue({
                         self.saleComplete = true;
                     }
                 });
+                
                 
                 // ref.child("users").orderByChild("name").equalTo(sale.name).once("value",snapshot => {
                 //     if (snapshot.exists()){
@@ -180,7 +184,6 @@ var app = new Vue({
 
             }
         },
-
         //toggle category buttons
         setVisibility: function (type) {
             this.search = "";
@@ -198,7 +201,6 @@ var app = new Vue({
 
     },
     computed: {
-
         // returns filtered list by search term or category
         filteredItems: function () {
             var self = this;
