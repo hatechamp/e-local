@@ -413,8 +413,9 @@ body {
 .schedule .logoMainIcon {
     width: auto;
     border: 4px dashed #00000024;
-    padding: 11px 11px 4px 15px;
+    padding: 15px;
     margin-top: 13px;
+    width: 260px;
 }
 .main .products {
     display: flex;
@@ -551,13 +552,16 @@ body {
 .main .cart .head .schedule .title {
     display: flex;
     font-family: 'Ubuntu', sans-serif;
-    font-size: 22px;
+    font-size: 17px;
     color: #00cc65;
     width: 380px;
     /* text-align: left; */
     margin-bottom: 5px;
     max-width: 30100%px;
-    line-height: 34px;
+    line-height: 24px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main .cart .head .schedule .day {
