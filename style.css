@@ -580,6 +580,9 @@ body {
     position: relative;
     font-size: 1em;
     line-height: 1.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main .cart .head .schedule .day {
@@ -680,9 +683,9 @@ body {
 }
 
 .btc {
-    position: absolute;
+    /* position: absolute; */
     width: 50px;
-    left: -68px;
+    /* left: -68px; */
 }
 
 .main .cart .cartTotal {
