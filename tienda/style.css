@@ -99,6 +99,20 @@ body {
     z-index: 1000;
     height: 50px;
 }
+.netlify-identity-menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right:20px;
+}
+
+.netlify-identity-item {
+    padding: 20px;
+}
+.netlify-identity-signup, .netlify-identity-login {
+    color: #333;
+    text-decoration: none;
+    font-family: Ubuntu;
+}
 
 .search input {
     flex: 1;
@@ -140,12 +154,15 @@ body {
 .main .header {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-content: center;
     align-items: center;
     margin-bottom: 0px;
     margin-bottom: 12px;
     margin-top: 10px;
+    max-width: 680px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .main .header .contain {
@@ -201,7 +218,7 @@ body {
     margin-bottom: 15px;
     box-shadow: 0px 3px 6px #33333329;
     border-left: 4px solid #00cc66;
-    max-width: 580px;
+    max-width: 644px;
 }
 .userForm {
     display: flex;
@@ -405,6 +422,8 @@ body {
     margin-top: 0px;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .main .products .item {
