@@ -103,6 +103,7 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-right:20px;
+    font-family: Ubuntu;
 }
 
 .netlify-identity-item {
@@ -418,10 +419,10 @@ body {
 }
 .schedule .logoMainIcon {
     width: auto;
-    border: 4px dashed #00000024;
+    /* border: 4px dashed #00000024; */
     padding: 15px;
     margin-top: 13px;
-    width: 260px;
+    height: 150px;
 }
 .main .products {
     display: flex;
@@ -562,7 +563,7 @@ body {
     font-size: 13px;
     color: #00cc65;
     width: 260px;
-    text-align: left;
+    text-align: center;
     margin-bottom: 5px;
     max-width: 30100%px;
     line-height: 24px;
