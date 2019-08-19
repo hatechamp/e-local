@@ -567,8 +567,8 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     color: #00cc65;
-    width: 260px;
-    text-align: center;
+    width: 240px;
+    /* text-align: left; */
     margin-bottom: 5px;
     max-width: 30100%px;
     line-height: 24px;
