@@ -23,6 +23,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: 0px;
     margin-bottom: 0px;
     font-weight: lighter;
+    font-size: 0.81em;
+    line-height: 1.4;
 }
 
 html {
@@ -149,6 +151,8 @@ body {
     max-width: 110px;
     min-width: 110px;
     font-size: 16px;
+    font-size: 1em;
+    /* line-height: 1.4; */
 }
 
 .main .search img.searchLabel {
@@ -207,6 +211,7 @@ body {
     flex: 1;
     padding-top: 15px;
     font-weight: 100;
+    font-size: 1em;
 }
 
 .filter .button:nth-child(2) {
@@ -571,6 +576,8 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
 .main .cart .head .schedule .day {
