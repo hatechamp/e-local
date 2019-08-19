@@ -12,78 +12,201 @@
 </head>
 
 <body>
-    <div class="home">
-        <div class="header">
-            <div class="headerContent">
-                <img src="images/logoMainIcon.png" alt="" class="logo">
-                <div class="headerButton">
-                    <a href="/tienda" class="headerLink">HACÉ TU PEDIDO</a>
-                </div>
-                <div class="headerText">
-                    Sumate a la revolución alimentaria
-                </div>
-            </div>
-            <div class="social">
-                <div class="item insta">
-                    <img src="images/fb.png" alt="" class="itemLinkImage">
-                    <a href="http://www.facebook.com/vrde.club" class="itemLink">
-                        / vrde.club
-                    </a>
-                </div>
-                <div class="item fb">
-                    <img src="images/insta.png" alt="" class="itemLinkImage">
-                    <a href="http://www.instagram.com/vrde_club" class="itemLink">
-                        / vrde.club
-                    </a>
-                </div>
-                <div class="item wa">
-                    <img src="images/whatsapp.png" alt="" class="itemLinkImage">
-                     15  6222  0308
-                </div>
-            </div>
-
+    <div class="main" id="app">
+        <div class="top-bar">
+            <div data-netlify-identity-menu></div>
         </div>
-        <div class="tiles">
-            <div class="container">
-                <div class="section productores">
-                    <div class="title">Comercio Justo con los Productores</div>
-                    <div class="text">Vení a conocerlos</div>
-                    <div class="link expand">
-                        <div class="title"></div>
-                        <div class="content">
-                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhWOokCFH2WCiTtefeRQjfphAbs-SFY3UGcIVF3wBWh6hiCg/viewform" class="hyperspan"></a>
+        <div class="header">
+            <img src="./images/logoMainIcon.png" alt="" class="logo">
+            <img class="headerBtc" src="./images/btc.jpg" alt="">
+            <div class="contain">
+                <div class="search">
+                    <div class="searchLabel">
+                        Que buscas?
+                    </div>
+                    <input id="searchInput" v-on:input="scrollTop()" type="text" v-model="search"
+                        placeholder="Variedad">
+                </div>
+                <div class="filter">
+                    <a class="button" v-bind:class="{active : active['veggie'].status}"
+                        @click="setVisibility('veggie');">Verduras</a>
+                    <a class="button" v-bind:class="{active : active['fruit'].status}"
+                        @click="setVisibility('fruit');">Frutas</a>
+                    <a class="button" v-bind:class="{active : active['meal'].status}"
+                        @click="setVisibility('meal');">Almacén</a>
+                </div>
+            </div>
+            <div class="headerDisplay">
+                <div class="aviso">
+                    Bienvenides! Todos nuestros productos son AGROECOLÓGICOS u ORGÁNICOS.
+                    <br />
+                    Consultanos por el cajoncito en PROMO de la semana !!
+                    <br />
+                    <br />
+                    HORARIOS DE ATENCIÓN EN LA LUCILA, ANCHORENA 684
+                    <br />
+                    VIERNES y SÁBADOS de 10 a 20 hrs. (Con todas las variedades, vamos al campo el Jueves!)
+                    <br />
+                    LUNES a JUEVES de 11 a 20 hrs. (Puede que no esté disponible todo lo publicado, consultar)
+                    <br />
+                    <br />
+                    HACEMOS ENVÍOS A DOMICILIO ♥ Consultar costos
+                    <br />
+                    Consultas: 15 6222 0308. Última actualización 13/8/19.
+
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div v-cloak class="item" v-for="item in filteredItems">
+                <img :src="`${item.url}`" class="productImage">
+                <div class="title" v-if="item.type == 'veggie'">{{item.name}} = ${{ price }}</div>
+                <div class="title" v-if="item.type == 'fruit' || item.type == 'meal'">{{item.name}} = ${{ item.price }}
+                </div>
+                <div class="setAmount">
+                    <div class="remove" v-on:click="removeItem(item)">-</div>
+                    <input type="number" step="any" class="amount" v-on:input="updateValue(item)"
+                        v-model="item.amount" />
+                    <div class="add" v-on:click="addItem(item)">+</div>
+                </div>
+            </div>
+        </div>
+        <div class="cart">
+            <div class="head">
+                <div class="discounts">
+                    <div class="discountTitle">
+                        <div class="subtitle">
+
                         </div>
                     </div>
-            
-
-                
+                </div>
+                <div class="veggieCart" v-if="cartHas.veggie == true" v-cloak>
+                    <div class="veggies">Verduras</div>
+                    <div class="price">Precio por unidad = ${{this.price}}</div>
+                    <div class="item" v-for="item in cart" v-if="item.type == 'veggie'">
+                        <img :src="`${item.url}`" alt="" class="img">
+                        <div class="itemName">
+                            <div class="name">{{item.name}}</div>
+                            <div class="itemTotal">
+                                <div class="amount">${{item.price}} * {{item.amount}}</div>
+                                <div class="equals"> = </div>
+                                <div class="total"> ${{item.total}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fruitCart" v-if="cartHas.fruit == true">
+                    <div class="fruits">Frutas</div>
+                    <div class="item" v-for="item in cart" v-if="item.type == 'fruit'">
+                        <img :src="`${item.url}`" alt="" class="img">
+                        <div class="itemName">
+                            <div class="name">{{item.name}}</div>
+                            <div class="itemTotal">
+                                <div class="amount">${{ item.price }} * {{item.amount}}</div>
+                                <div class="equals">=</div>
+                                <div class="total"> ${{item.total}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mealCart" v-if="cartHas.meal == true">
+                    <div class="fruits">Almacen
+                        <div class="subtitle">Todos estos productos son agroecológicos también</div>
+                    </div>
+                    <div class="item" v-for="item in cart" v-if="item.type == 'meal'">
+                        <img :src="`${item.url}`" alt="" class="img">
+                        <div class="itemName">
+                            <div class="name">{{item.name}}</div>
+                            <div class="itemTotal">
+                                <div class="amount">${{ item.price }} * {{item.amount}}</div>
+                                <div class="equals">=</div>
+                                <div class="total"> ${{item.total}}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="section cocina">
-                    <div class="title">Alimentacion sana en tus manos</div>
-                    <div class="text">Cociná agroecológico y subí tus platos a nuestra tienda</div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhWOokCFH2WCiTtefeRQjfphAbs-SFY3UGcIVF3wBWh6hiCg/viewform" class="hyperspan"></a>
+            <div class="cartTotal">Total = ${{cartTotal}}</div>
+            <div class="schedule">
+                <div class="title">
+                    ESCANEÁ EL SIGUIENTE CÓDIGO PARA PAGAR CON MERCADO PAGO
                 </div>
-                <div class="section delivery">
-                    <div class="title">VRDE Delivery</div>
-                    <div class="text">Entregá pedidos y el costo de envío es para vos</div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhWOokCFH2WCiTtefeRQjfphAbs-SFY3UGcIVF3wBWh6hiCg/viewform" class="hyperspan"></a>
-                </div>
+                <img src="./images/qr.jpg" alt="" class="logoMainIcon">
             </div>
-            
-                <div class="section eventos">
-                    <div class="title">Eventos</div>
-                    <div class="text">Enterate de cosas divertidas</div>
-                        <a href="/">
-                            <span class="hyperspan"></span>
-                        </a>
-
-
+            <form action="#" class="userForm">
+                <div class="title">Datos de Usuario</div>
+                <div class="required">* Por favor llene los campos requeridos</div>
+                <input class="requiredInput" type="text" placeholder="Nombre" v-model="userData.name" required>
+                <input class="requiredInput" type="tel" placeholder="Telefono" v-model="userData.phone" required>
+                <input class="requiredInput" type="text" placeholder="Direccion" v-model="userData.address"
+                    :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
+                <input type="email" placeholder="Correo" v-model="userData.email" required>
+                <div class="delivery">
+                    <label for="delivery" value="Retiro en local" class="label" @click="disabled = !disabled">Entrega a
+                        tu casa <br>
+                        <div class="small">* Consulte costo de envio</div>
+                    </label>
+                    <input id="delivery" type="checkbox" v-model="userData.delivery">
+                </div>
+            </form>
+            <div class="confirm" v-on:click="saveSale(cart)" v-show="saleComplete == false">Realizar Pedido</div>
+            <div class="confirmSale" v-show="saleComplete == true">
+                Su pedido se ha realizado con exito!
+                <a class="reload" href="/">Realizar otro pedido</a>
+            </div>
+            <div id="replybox"></div>
+            <div class="schedule">
+                    <div class="title">
+                        <img class="btc" src="./images/btc.jpg" alt=""> PAGOS Y DONACIOS CON BITCOIN!
+                        <br>
+                        <strong style="color:#333;">1DdkCoDbAjPLgdkvQRizmLi438M16piqFB</strong>
+                    </div>
+                </div>
+            <div class="footer">
+                <img src="images/logoMainIconOnly.png" alt="" class="footerLogo">
+                <div class="social">
+                    <div class="link">
+                        <img src="images/fb.png" alt="" class="fb">
+                        <img src="images/insta.png" alt="" class="insta">
+                        Seguinos en Instagram /vrde.club
+                    </div>
+                    <div class="contact">
+                        <img src="images/phone.png" alt="" class="phone">
+                        Dudas y consultas llamanos: 15 6222 0308
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="products.js"></script>
+    <script src="main.js"></script>
+    <script>
+        window.replybox = {
+            site: 'E9rYZZ5Y2L',
+        };
+    </script>
+    <script src="https://cdn.getreplybox.com/js/embed.js"></script>
+    <script>
+
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAKajq835OuZXDij4kZfUT7PjRXzNpVd-U",
+            authDomain: "vrde-club.firebaseapp.com",
+            databaseURL: "https://vrde-club.firebaseio.com",
+            projectId: "vrde-club",
+            storageBucket: "vrde-club.appspot.com",
+            messagingSenderId: "835566805443"
+        };
+
+        firebase.initializeApp(config);
+
+        var database = firebase.database();
+
+    </script>
 </body>
 
 </html>

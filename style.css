@@ -1,238 +1,827 @@
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
-.home {}
-
-.home .header {
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-image: url('images/portada2.JPG');
-    background-size: cover;
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
 }
 
-.home .header .headerContent {
-    display: flex;
-    flex-direction: column;
-}
-
-.home .header img {
-    max-width: 300px;
-}
-
-.home .header .logo {
-    max-width: 250px;
-    margin-bottom:20px;
-}
-
-.home .header .headerContent .headerButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    background-color: #00cc66;
-    color: white;
-}
-
-.home .header .headerContent .headerButton .headerLink {
-    text-decoration: none;
-    color: white;
+.aviso {
+    padding: 20px;
+    color: #636363;
+    font-size: 12px;
     font-family: Ubuntu;
-    font-size: 20px;
-}
-
-.home .header .headerContent .headerText {
-    color: #ffffff;
-    font-family: Ubuntu;
-    text-align: center;
-    /* margin-top: 30px; */
-    position: relative;
-    top: 28px;
-}
-
-.home .header .social {
-    max-width: 200px;
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    position: relative;
-    top: 40px;
-}
-
-.home .header .social .item {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-    color: rgb(204, 204, 204);
-    font-family: Ubuntu;
-    align-items: center;
-}
-
-.home .header .social .item .itemLink {
-    text-decoration: none;
-    font-family: Ubuntu;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ccc;
-}
-
-.home .header .social .fb {}
-
-.home .header .social .insta {}
-
-.home .header .social .wa {}
-
-.home .header .social .itemLinkImage {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    -webkit-filter: invert(100%); /* Safari/Chrome */
-    filter: invert(100%);
-}
-
-.home .tiles {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.home .tiles .container {
-    width: 100%;
-    display: flex;
-    color: white;
-    font-size: 25px;
-    font-family: Ubuntu;
+    line-height: 14px;
+    /* border: 1px solid #ececec; */
+    /* max-width: 650px; */
+    margin: 10px;
+    margin-top: 0px;
     margin-bottom: 0px;
-    line-height: 30px;
-    flex-wrap: wrap;
-    text-align: center;
+    font-weight: lighter;
 }
 
-.home .tiles .section {
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input:required {
+    border: 1px dashed red;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+body {
+    margin: 0px;
+}
+
+.main {
+    align-content: center;
+    justify-content: center;
+    /* max-width: 900px; */
+    margin: 0 auto;
+}
+
+.main .search {
+    background-color: #333333;
+    height: 20px;
+    padding: 15px;
     display: flex;
+    flex-direction: row;
     flex: 1;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    flex-direction: column;
-    height: 300px;
-    margin: 0px;
-    background-color: #3c3c3c;
-    min-width: 340px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.main .search.fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1000;
+    height: 50px;
+}
+.netlify-identity-menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right:20px;
+}
+
+.netlify-identity-item {
     padding: 20px;
+}
+.netlify-identity-signup, .netlify-identity-login {
+    color: #333;
+    text-decoration: none;
+    font-family: Ubuntu;
+}
+
+.headerBtc {
+    width: 50px;
+    opacity: 0.8;
+}
+
+.search input {
+    flex: 1;
+    max-width: 200px;
+    padding: 3px;
+    padding-left: 9px;
+    color: #333333;
+}
+
+.filterProducts {
+    max-width: 320px;
+    font-family: Ubuntu;
+    font-size: 14px;
+    padding-bottom: 12px;
+    position: relative;
+    bottom: 0px;
+}
+
+.main .search .searchLabel {
+    color: white;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    height: 18px;
+    font-family: 'Ubuntu', sans-serif;
+    padding-right: 10px;
+    flex: 1;
+    max-width: 110px;
+    min-width: 110px;
+    font-size: 16px;
+}
+
+.main .search img.searchLabel {
+    background-color: #333;
+    height: 20px;
+    padding: 20px;
+}
+
+.main .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    max-width: 680px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.main .header .contain {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    flex-wrap: wrap;
+    max-width: 438px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin: 10px;
+    margin-top: 40px;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    font-family: 'Ubuntu', sans-serif;
+    height: 45px;
+    flex: 1;
+}
+
+.filter .button {
+    padding: 13px;
+    background-color: #9e9e9e33;
+    color: #808080;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    max-width: 146px;
+    margin-bottom: 0px;
+    flex: 1;
+    padding-top: 15px;
+    font-weight: 100;
+}
+
+.filter .button:nth-child(2) {
+    margin: 0px 10px;
+}
+
+.filter .button.active {
+    color: white;
+    background-color: #00cc65;
+}
+
+
+ .headerDisplay {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 3px 6px #33333329;
+    border-left: 4px solid #00cc66;
+    max-width: 644px;
+}
+.userForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 281px;
+    position: relative;
+    top: 2px;
+    margin-bottom: 30px;
+}
+
+.userForm .title {
+    flex: 1 100%;
+    margin-bottom: 13px;
+    color: #808080;
+    font-size: 18px;
+}
+
+.userForm input {
+    border-width: 0px;
+    padding: 9px;
+    font-size: 16px;
+    margin: 5px 0px;
+    min-width: 210px;
+    background-color: #f0f0f0;
+    flex: 1;
+    color: #808080;
     position: relative;
 }
 
-.home .tiles .section .text {
-    max-width: 360px;
-    text-align: center;
+.userForm .required {
+    font-size: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #fe5046;
+}
+
+.userForm input.requiredInput {
+    /* border:0.5px solid red; */
+    box-shadow: 0px 0px 1px 0.5px #fe5046b0;
+}
+
+.userForm input.disabled {
+    border-width: 0px;
+    padding: 5px;
     font-size: 14px;
-    color: white;
+    margin: 6px;
+    min-width: 210px;
+    background-color: #f0f0f0;
+    flex: 1;
+    opacity: 0.3;
+    position: relative;
+}
+
+.delivery {
+    display: flex;
+    flex-direction: row-reverse;
     margin-top: 10px;
+    font-size: 16px;
 }
 
-.home .tiles .section .link {}
-
-.home .tiles .section .link .expand {}
-
-.home .tiles .section .link .title {}
-
-.home .tiles .section .link .content {}
-
-.home .tiles .section.productores {
-    background-image: url(images/productores.jpg);
-    background-size: cover;
-    background-blend-mode: soft-light;
+.delivery label .small {
+    position: relative;
+    top: 5px;
+    font-size: 10px;
 }
 
-.home .tiles .section.vrde {
-    background-image: url('images/campo5.jpg');
-    background-size: cover;
-    background-blend-mode: soft-light;
+.delivery label {
+    position: relative;
+    top: 2px;
+    color: #808080;
 }
 
-.home .tiles .section.cocina {
-    background-image: url('images/cocina.jpeg');
-    background-size: cover;
-    background-blend-mode: soft-light;
+.delivery input {
+    width: 10px;
+    min-width: 20px;
+    position: relative;
+    top: 1.5px;
 }
 
-.home .tiles .section.delivery {
-    background-image: url('images/delivery.jpg');
-    background-size: cover;
-    background-blend-mode: soft-light;
+.discounts {
+    margin: 0px;
+    display: flex;
+    padding: 20px 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    min-width: 240px;
+    background: #ffffffd4;
+    width: 100%;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
 }
 
-.home .tiles .section.huertas {
-    background-image: url('images/huerta4.jpg');
-    background-blend-mode: soft-light;
+.discountTitle {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 22px;
+    color: #00cc65;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.home .tiles .section.eventos {
-    background-image: url('images/eventos.jpg');
-    background-blend-mode: soft-light;
+.discountTitle .subtitle {
+    font-size: 14px;
+    color: #808080;
+    line-height: 20px;
+    margin-top: 5px;
+    text-align: center;
 }
 
-.hyperspan
-{
-    opacity: .3;
-    position:absolute;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    z-index:1;
+.fruitCart, .mealCart {
+    /* margin-top: 20px; */
+    padding: 10px;
+    background: #333;
+    color: white;
+    padding-bottom: 20px;
+    /* max-width: 90%; */
+    /* max-width: 500px; */
+    width: 100%;
+    max-width: 800px;
 }
+
+.fruitCart .fruits, .mealCart .fruits {
+    padding: 10px;
+    background: #333;
+    color: #00cc65;
+    font-size: 25px;
+}
+
+.mealCart .subtitle {
+    background: #333;
+    color: #00cc65;
+    font-size: 14px;
+    padding-top: 10px;
+    color: #ffffff99;
+    margin-left: 5px
+}
+
+.fruitCart .fruitCart .subtitle {
+    background: #333;
+    color: #00cc65;
+    font-size: 14px;
+    padding-top: 10px;
+    color: #ffffff99;
+}
+
+.equals {
+    padding-top: 0px;
+    padding: 0px 20px;
+    text-align: center;
+    align-items: center;
+}
+
+.discounts .amount {
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    padding: 3px;
+    justify-content: flex-start;
+    align-items: center;
+    color: #333333;
+    width: 81px;
+}
+
+.discounts .price {
+    width: 240px;
+}
+
+.main .header .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    color: #17ba7bfc;
+    width: 290px;
+    margin-bottom: 10px;
+}
+
+.main .header .logo {
+    height: 110px;
+    position: relative;
+    margin: 10px;
+    margin-top: 30px;
+    margin: 0px 20px;
+}
+.schedule .logoMainIcon {
+    width: auto;
+    border: 4px dashed #00000024;
+    padding: 15px;
+    margin-top: 13px;
+    width: 260px;
+}
+.main .products {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 0px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.main .products .item {
+    width: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    background: #333;
+    margin: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 10px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    max-height: 240px;
+    overflow: hidden;
+}
+
+.main .products .item .productImage {
+    height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+    background: #e6e6e6;
+    object-fit: cover;
+}
+
+.main .products .item .title {
+    color: white;
+    padding: 7px;
+    padding-left: 10px;
+    font-size: 12px;
+    width: 100%;
+    line-height: 17px;
+}
+
+.main .products .item .price {
+    margin-bottom: 10px;
+    color: white;
+    padding-left: 10px;
+    display: none;
+}
+
+.main .products .item .setAmount {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 35px;
+}
+
+.main .products .item .add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #00cc65;
+    height: 35px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    padding-bottom: 4px;
+}
+
+.main .products .item .remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #fe5046;
+    height: 35px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    padding-bottom: 4px;
+}
+
+.main .products .item .amount {
+    width: 50px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+    color: #808080;
+    font-weight: bold;
+}
+
+.main .cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 20px;
+    color: #555555;
+    position: relative;
+    overflow: hidden;
+}
+
+.main .cart .head {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    background-position: 0px;
+    margin-top: 0px;
+    position: relative;
+    bottom: 4px;
+    padding-top: 0px;
+}
+
+ .schedule {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+ .schedule .title {
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    color: #00cc65;
+    width: 260px;
+    text-align: left;
+    margin-bottom: 5px;
+    max-width: 30100%px;
+    line-height: 24px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.main .cart .head .schedule .day {
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    padding: 0px 2px;
+    justify-content: flex-start;
+    color: #808080;
+    line-height: 20px;
+}
+
+.main .cart .veggieCart {
+    padding: 10px;
+    padding-top: 20px;
+    background: #333;
+    color: white;
+    padding-bottom: 20px;
+    /* min-width: 90%; */
+    /* max-width: 90%; */
+    width: 100%;
+    max-width: 800px;
+}
+
+.main .cart .veggieCart .veggies {
+    padding: 10px;
+    background: #333;
+    color: #00cc65;
+    font-size: 25px;
+}
+
+.main .cart .price {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 14px;
+    position: relative;
+    left: 15px;
+    top: 1px;
+    margin-right: 20px;
+    color: #ffffff99;
+}
+
+.main .cart .item {
+    margin-bottom: 20px;
+    padding: 5px;
+    margin: 5px;
+    border-bottom: 0.2px solid #777777;
+    font-family: 'Ubuntu', sans-serif;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+}
+
+.main .cart .item .itemName {
+    display: flex;
+    /* flex: 1; */
+    flex-wrap: wrap;
+}
+
+.main .cart .item .itemTotal {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 0px;
+}
+
+.main .cart .item .img {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.main .cart .item .name {
+    margin-right: -10px;
+    /* width: 160px; */
+    font-size: 14px;
+    padding-right: 20px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    line-height: 18px;
+    flex: 1 100%;
+}
+
+.main .cart .item .amount {
+    font-size: 16px;
+    display: flex;
+    min-width: 50px;
+}
+
+.main .cart .item .total {
+    color: #00cc70;
+}
+
+.btc {
+    position: absolute;
+    width: 50px;
+    left: -68px;
+}
+
+.main .cart .cartTotal {
+    font-size: 25px;
+    margin: 40px 0px;
+    color: #00cc65;
+    flex: 1 100%;
+    text-align: center;
+}
+
+.main .cart .confirm {
+    width: 280px;
+    display: flex;
+    text-align: center;
+    background-color: #00cc65;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    margin: 20px 0px;
+    font-size: 20px;
+}
+
+.main .cart .confirmSale {
+    background: white;
+    max-width: 100%;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #838587;
+}
+
+.main .cart .confirmSale .reload {
+    margin-top: 10px;
+    width: 280px;
+    display: flex;
+    text-align: center;
+    background-color: #00cc65;
+    justify-content: center;
+    padding: 20px;
+    cursor: pointer;
+    color: white;
+    margin: 20px 0px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+    background-color: #333;
+}
+
+.footer .footerLogo {
+    height: 64px;
+    position: relative;
+    margin-right: 20px;
+}
+
+.footer .social {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 3px;
+    color: #ffffffbf;
+}
+
+.footer .social .footerLogo {
+    width: 160px;
+    position: absolute;
+    left: 0px;
+}
+
+.footer .social .insta {
+    height: 20px;
+    position: relative;
+    top: 4px;
+    margin-right: 8px;
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+}
+
+.footer .social .fb {
+    height: 18px;
+    position: relative;
+    top: 3px;
+    margin-right: 7px;
+    left: 2px;
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+}
+
+.footer .social .link {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.footer .social .web {
+    height: 19px;
+    margin-right: 6px;
+    top: 3px;
+    left: 1px;
+    position: relative;
+}
+
+.footer .social .weblink {
+    text-decoration: none;
+    margin-bottom: 2px;
+    position: relative;
+}
+
+.footer .contact {
+    position: relative;
+    margin-top: 3px;
+    line-height: 26px;
+}
+
+.footer .contact .phone {
+    position: relative;
+    height: 20px;
+    top: 4px;
+    margin-right: 5px;
+    -webkit-filter: grayscale(1) invert(1);
+    filter: grayscale(1) invert(1);
+}
+
+.footer .zones {
+    margin-top: 2px;
+    position: relative;
+    line-height: 26px;
+}
+
+.footer .zones .zone {
+    position: relative;
+    height: 20px;
+    top: 5px;
+    margin-right: 5px;
+}
+
+[v-cloak] {
+    display: none;
+}
+

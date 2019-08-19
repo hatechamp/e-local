@@ -1,0 +1,238 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.home {}
+
+.home .header {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-image: url('images/portada2.JPG');
+    background-size: cover;
+}
+
+.home .header .headerContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.home .header img {
+    max-width: 300px;
+}
+
+.home .header .logo {
+    max-width: 250px;
+    margin-bottom:20px;
+}
+
+.home .header .headerContent .headerButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background-color: #00cc66;
+    color: white;
+}
+
+.home .header .headerContent .headerButton .headerLink {
+    text-decoration: none;
+    color: white;
+    font-family: Ubuntu;
+    font-size: 20px;
+}
+
+.home .header .headerContent .headerText {
+    color: #ffffff;
+    font-family: Ubuntu;
+    text-align: center;
+    /* margin-top: 30px; */
+    position: relative;
+    top: 28px;
+}
+
+.home .header .social {
+    max-width: 200px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+    top: 40px;
+}
+
+.home .header .social .item {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    color: rgb(204, 204, 204);
+    font-family: Ubuntu;
+    align-items: center;
+}
+
+.home .header .social .item .itemLink {
+    text-decoration: none;
+    font-family: Ubuntu;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+}
+
+.home .header .social .fb {}
+
+.home .header .social .insta {}
+
+.home .header .social .wa {}
+
+.home .header .social .itemLinkImage {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    -webkit-filter: invert(100%); /* Safari/Chrome */
+    filter: invert(100%);
+}
+
+.home .tiles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.home .tiles .container {
+    width: 100%;
+    display: flex;
+    color: white;
+    font-size: 25px;
+    font-family: Ubuntu;
+    margin-bottom: 0px;
+    line-height: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.home .tiles .section {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    height: 300px;
+    margin: 0px;
+    background-color: #3c3c3c;
+    min-width: 340px;
+    padding: 20px;
+    position: relative;
+}
+
+.home .tiles .section .text {
+    max-width: 360px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    margin-top: 10px;
+}
+
+.home .tiles .section .link {}
+
+.home .tiles .section .link .expand {}
+
+.home .tiles .section .link .title {}
+
+.home .tiles .section .link .content {}
+
+.home .tiles .section.productores {
+    background-image: url(images/productores.jpg);
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+
+.home .tiles .section.vrde {
+    background-image: url('images/campo5.jpg');
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+
+.home .tiles .section.cocina {
+    background-image: url('images/cocina.jpeg');
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+
+.home .tiles .section.delivery {
+    background-image: url('images/delivery.jpg');
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+
+.home .tiles .section.huertas {
+    background-image: url('images/huerta4.jpg');
+    background-blend-mode: soft-light;
+}
+
+.home .tiles .section.eventos {
+    background-image: url('images/eventos.jpg');
+    background-blend-mode: soft-light;
+}
+
+.hyperspan
+{
+    opacity: .3;
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    z-index:1;
+}
