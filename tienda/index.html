@@ -16,8 +16,9 @@
         <div class="top-bar">
             <div data-netlify-identity-menu></div>
         </div>
-        <div class="header">
+        <div class="header"> 
             <img src="./images/logoMainIcon.png" alt="" class="logo">
+            <img class="headerBtc" src="./images/btc.jpg" alt="">
             <div class="contain">
                 <div class="search">
                     <div class="searchLabel">
@@ -82,7 +83,6 @@
                 <div class="veggieCart" v-if="cartHas.veggie == true" v-cloak>
                     <div class="veggies">Verduras</div>
                     <div class="price">Precio por unidad = ${{this.price}}</div>
-                    <div class="price">Unidades = {{this.cartItems}}</div>
                     <div class="item" v-for="item in cart" v-if="item.type == 'veggie'">
                         <img :src="`${item.url}`" alt="" class="img">
                         <div class="itemName">
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="mealCart" v-if="cartHas.meal == true">
-                    <div class="fruits">Otros
+                    <div class="fruits">Almacen
                         <div class="subtitle">Todos estos productos son agroecológicos también</div>
                     </div>
                     <div class="item" v-for="item in cart" v-if="item.type == 'meal'">
@@ -134,7 +134,7 @@
                 <img src="./images/qr.jpg" alt="" class="logoMainIcon">
 
                 <div class="title">
-                    PAGOS Y DONACIOS CON BITCOIN!
+                    <img class="btc" src="./images/btc.jpg" alt=""> PAGOS Y DONACIOS CON BITCOIN!
                     <br>
                     <strong style="color:#333;">1DdkCoDbAjPLgdkvQRizmLi438M16piqFB</strong>
                 </div>
