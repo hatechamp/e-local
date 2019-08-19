@@ -540,16 +540,17 @@ body {
     padding-top: 0px;
 }
 
-.main .cart .head .schedule {
+ .schedule {
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
-.main .cart .head .schedule .title {
+ .schedule .title {
     display: flex;
     font-family: 'Ubuntu', sans-serif;
     font-size: 17px;
