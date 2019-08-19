@@ -106,6 +106,8 @@ body {
     justify-content: flex-end;
     margin-right:20px;
     font-family: Ubuntu;
+    max-width: 1080px;
+    margin: auto;
 }
 
 .netlify-identity-item {
@@ -231,6 +233,7 @@ body {
     box-shadow: 0px 3px 6px #33333329;
     border-left: 4px solid #00cc66;
     max-width: 644px;
+    margin: 10px;
 }
 .userForm {
     display: flex;
@@ -833,3 +836,16 @@ body {
     display: none;
 }
 
+
+@media (max-width: 600px) {
+        .main .products .item {
+            width: 80%;
+   }
+   .main .products .item .setAmount {
+    width: 100%;
+}
+   @media (max-width: 300px) {
+    .facet_sidebar {
+    display: none;
+    }
+   }
