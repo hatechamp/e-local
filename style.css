@@ -90,6 +90,7 @@ body {
     align-items: center;
     height: 50px;
     margin-bottom: 10px;
+    transition: all .25s ease-in-out;
 }
 
 .main .search.fixed {
@@ -563,6 +564,7 @@ body {
     text-align: center;
     align-items: center;
     margin-bottom: 50px;
+    max-width: 320px;
 }
 
  .schedule .title {
