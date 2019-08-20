@@ -232,7 +232,7 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
     box-shadow: 0px 3px 6px #33333329;
-    border-left: 4px solid #00cc66;
+    border-left: 2px solid #d8d8d8;
     max-width: 644px;
     margin: 10px;
 }
@@ -520,7 +520,7 @@ body {
 }
 
 .main .products .item .amount {
-    width: 50px;
+    width: 70px;
     height: 35px;
     display: flex;
     align-items: center;
@@ -843,7 +843,7 @@ body {
 }
 
 
-@media (max-width: 420px) {
+@media (max-width: 600px) {
         .main .products .item {
             width: 95%;
    }
