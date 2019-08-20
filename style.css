@@ -846,6 +846,10 @@ body {
     display: none;
 }
 
+.text-grey-dark {
+    display:none;
+}
+
 body {
     height: 2000px;
     position: relative;
