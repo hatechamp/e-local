@@ -232,7 +232,7 @@
 
             let y = window.scrollY;
 
-            if (y > 0) {
+            if (y > 300) {
                 scrollToTopButton.className = "top-link show";
             } else {
                 scrollToTopButton.className = "top-link hide";
@@ -244,7 +244,7 @@
         const scrollToTop = () => {
             const c = document.documentElement.scrollTop || document.body.scrollTop;
 
-            if (c > 500) {
+            if (c > 0) {
                 window.requestAnimationFrame(scrollToTop);
                 window.scrollTo(0, c - c / 10);
             }
