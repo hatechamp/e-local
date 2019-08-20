@@ -107,7 +107,7 @@ body {
     justify-content: flex-end;
     margin-right:20px;
     font-family: Ubuntu;
-    max-width: 1080px;
+    max-width: 680px;
     margin: auto;
 }
 
@@ -605,7 +605,7 @@ body {
     padding-bottom: 20px;
     /* min-width: 90%; */
     /* max-width: 90%; */
-    width: 100%;
+    width: 95%;
     max-width: 800px;
 }
 
