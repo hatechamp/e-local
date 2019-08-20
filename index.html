@@ -161,6 +161,11 @@
                 </div>
             </div>
             <div id="replybox"></div>
+            <a class="top-link hide" href="" id="js-top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+                    <path d="M12 6H0l6-6z" /></svg>
+                <span class="screen-reader-text">Back to top</span>
+            </a>
             <div class="footer">
                 <img src="images/logoMainIconOnly.png" alt="" class="footerLogo">
                 <div class="social">
@@ -181,15 +186,14 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.getreplybox.com/js/embed.js"></script>
     <script src="products.js"></script>
     <script src="main.js"></script>
     <script>
-            window.replybox = {
-                site: 'X12n3MaR8w', 
-            };
-            </script>
-            <script src="https://cdn.getreplybox.com/js/embed.js"></script>
-    <script>
+
+        window.replybox = {
+            site: 'X12n3MaR8w',
+        };
 
         // Initialize Firebase
         var config = {
@@ -204,6 +208,51 @@
         firebase.initializeApp(config);
 
         var database = firebase.database();
+
+        //Scroll top on pageload
+        window.addEventListener('scroll', function (evt) {
+
+            var distance_from_top = document.documentElement.scrollTop
+
+            if (distance_from_top === 0) {
+                document.getElementsByClassName("search")[0].classList.remove("fixed");
+            }
+
+            if (distance_from_top > 50) {
+                document.getElementsByClassName("search")[0].classList.add("fixed");
+            }
+
+        });
+
+
+        const scrollToTopButton = document.getElementById('js-top');
+
+        const scrollFunc = () => {
+
+            let y = window.scrollY;
+
+            if (y > 0) {
+                scrollToTopButton.className = "top-link show";
+            } else {
+                scrollToTopButton.className = "top-link hide";
+            }
+        };
+
+        window.addEventListener("scroll", scrollFunc);
+
+        const scrollToTop = () => {
+            const c = document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (c > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, c - c / 10);
+            }
+        };
+
+        scrollToTopButton.onclick = function (e) {
+            e.preventDefault();
+            scrollToTop();
+        }
 
     </script>
 </body>

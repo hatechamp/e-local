@@ -164,18 +164,3 @@ let discounts = [
     //{ amount: "250 >", price: 32 }
 ]
 
-
-//Scroll top on pageload
-window.addEventListener('scroll', function (evt) {
-
-    var distance_from_top = document.documentElement.scrollTop
-
-    if (distance_from_top === 0) {
-        document.getElementsByClassName("search")[0].classList.remove("fixed");
-    }
-
-    if (distance_from_top > 50) {
-        document.getElementsByClassName("search")[0].classList.add("fixed");
-    }
-
-});

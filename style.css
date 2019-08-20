@@ -102,10 +102,11 @@ body {
     z-index: 1000;
     height: 50px;
 }
+
 .netlify-identity-menu {
     display: flex;
     justify-content: flex-end;
-    margin-right:20px;
+    margin-right: 20px;
     font-family: Ubuntu;
     max-width: 680px;
     margin: auto;
@@ -114,6 +115,7 @@ body {
 .netlify-identity-item {
     padding: 20px;
 }
+
 .netlify-identity-signup, .netlify-identity-login {
     color: #333;
     text-decoration: none;
@@ -226,8 +228,7 @@ body {
     background-color: #00cc65;
 }
 
-
- .headerDisplay {
+.headerDisplay {
     width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -236,6 +237,7 @@ body {
     max-width: 644px;
     margin: 10px;
 }
+
 .userForm {
     display: flex;
     flex-wrap: wrap;
@@ -426,6 +428,7 @@ body {
     margin-top: 30px;
     margin: 0px 20px;
 }
+
 .schedule .logoMainIcon {
     width: auto;
     /* border: 4px dashed #00000024; */
@@ -433,6 +436,7 @@ body {
     margin-top: 13px;
     height: 150px;
 }
+
 .main .products {
     display: flex;
     justify-content: center;
@@ -556,7 +560,7 @@ body {
     padding-top: 0px;
 }
 
- .schedule {
+.schedule {
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -567,7 +571,7 @@ body {
     max-width: 320px;
 }
 
- .schedule .title {
+.schedule .title {
     display: flex;
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
@@ -842,16 +846,99 @@ body {
     display: none;
 }
 
+body {
+    height: 2000px;
+    position: relative;
+  }
+  
+  .intro-copy {
+    padding: 1em;
+    margin: 50vh auto;
+    max-width: 15em;
+    font-family: Helvetica;
+    font-weight: lighter;
+    font-size: 2em;
+    line-height: 1.2;
+    text-align: center;
+  }
+  
+  .top-link {
+    transition: all .25s ease-in-out;
+    position: fixed;
+    bottom: 30px;
+    right: 0;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em 3em 0;
+    border-radius: 50%;
+    padding: .25em;
+    width: 60px;
+    height: 60px;
+    background-color: #F8F8F8;
+  }
+  .top-link.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  .top-link.hide {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .top-link svg {
+    fill: #000;
+    width: 24px;
+    height: 12px;
+  }
+  .top-link:hover {
+    background-color: #E8E8E8;
+  }
+  .top-link:hover svg {
+    fill: #000000;
+  }
+  
+  .screen-reader-text {
+    position: absolute;
+    clip-path: inset(50%);
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    word-wrap: normal !important;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  .screen-reader-text:focus {
+    display: block;
+    top: 5px;
+    left: 5px;
+    z-index: 100000;
+    clip-path: none;
+    background-color: #eee;
+    padding: 15px 23px 14px;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    line-height: normal;
+    color: #444;
+    font-size: 1em;
+    clip: auto !important;
+  }
+  
 
-@media (max-width: 600px) {
-        .main .products .item {
-            width: 95%;
-   }
-   .main .products .item .setAmount {
-    width: 100%;
-}
-   @media (max-width: 300px) {
-    .facet_sidebar {
-    display: none;
+@media (max-width: 420px) {
+    .main .products .item {
+        width: 95%;
     }
-   }
+    .main .products .item .setAmount {
+        width: 100%;
+    }
+}
+
+@media (max-width: 300px) {
+    .facet_sidebar {
+        display: none;
+    }
+}
