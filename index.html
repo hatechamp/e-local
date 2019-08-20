@@ -167,6 +167,7 @@
                 <span class="screen-reader-text">Back to top</span>
             </a>
             <div class="footer">
+                <div class="hideReply"></div>
                 <img src="images/logoMainIconOnly.png" alt="" class="footerLogo">
                 <div class="social">
                     <div class="link">
@@ -243,7 +244,7 @@
         const scrollToTop = () => {
             const c = document.documentElement.scrollTop || document.body.scrollTop;
 
-            if (c > 0) {
+            if (c > 500) {
                 window.requestAnimationFrame(scrollToTop);
                 window.scrollTo(0, c - c / 10);
             }
@@ -253,6 +254,8 @@
             e.preventDefault();
             scrollToTop();
         }
+
+        document.getElementsByClassName(".text-grey-dark")[0].style.visibility = 'hidden';
 
     </script>
 </body>
