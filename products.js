@@ -174,7 +174,7 @@ window.addEventListener('scroll', function (evt) {
         document.getElementsByClassName("search")[0].classList.remove("fixed");
     }
 
-    if (distance_from_top > 0) {
+    if (distance_from_top > 50) {
         document.getElementsByClassName("search")[0].classList.add("fixed");
     }
 

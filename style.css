@@ -841,7 +841,7 @@ body {
 
 @media (max-width: 600px) {
         .main .products .item {
-            width: 80%;
+            width: 95%;
    }
    .main .products .item .setAmount {
     width: 100%;
