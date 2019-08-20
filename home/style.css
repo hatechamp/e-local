@@ -46,7 +46,7 @@ table {
 .home {}
 
 .home .header {
-    height: 500px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +59,8 @@ table {
 .home .header .headerContent {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home .header img {
@@ -66,7 +68,7 @@ table {
 }
 
 .home .header .logo {
-    max-width: 250px;
+    max-width: 150px;
     margin-bottom:20px;
 }
 
@@ -77,6 +79,7 @@ table {
     height: 60px;
     background-color: #00cc66;
     color: white;
+    width: 240px;
 }
 
 .home .header .headerContent .headerButton .headerLink {
@@ -96,13 +99,17 @@ table {
 }
 
 .home .header .social {
-    max-width: 200px;
+    max-width: 210px;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     position: relative;
     top: 40px;
+    background: #00000069;
+    align-items: center;
+    align-content: center;
+    padding: 20px;
 }
 
 .home .header .social .item {
@@ -113,8 +120,9 @@ table {
     align-content: center;
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 20px;
-    color: rgb(204, 204, 204);
+    margin-bottom: 10px;
+    margin-top: 7px;
+    color: rgb(189, 189, 189);
     font-family: Ubuntu;
     align-items: center;
 }
