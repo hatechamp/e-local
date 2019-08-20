@@ -790,6 +790,7 @@ body {
 .footer .social .link {
     margin-bottom: 5px;
     position: relative;
+    font-size: 0.8em;
 }
 
 .footer .social .web {
@@ -810,6 +811,7 @@ body {
     position: relative;
     margin-top: 3px;
     line-height: 26px;
+    font-size: 0.8em;
 }
 
 .footer .contact .phone {
