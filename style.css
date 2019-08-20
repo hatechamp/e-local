@@ -843,7 +843,7 @@ body {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 420px) {
         .main .products .item {
             width: 95%;
    }
