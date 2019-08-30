@@ -1,5 +1,5 @@
 let products = [ 
-    { name: 'Mix Verduras para Sopa (250g)', amount: 0, url: 'images/verduritas.jpeg', type: 'veggie' },
+    { name: 'Mix para Sopa (250g)', amount: 0, url: 'images/verduritas.jpeg', type: 'veggie' },
     // { name: 'Mix Verduras para Wok (250g)', amount: 0, url: 'images/wok.jpeg', type: 'veggie' },
     { name: 'Acelga (Paq)', amount: 0, url: 'images/acelga.jpg', type: 'veggie' },
     // { name: 'Achicoria (500g)', amount: 0, url: 'images/achicoria.jpg', type: 'veggie' },
