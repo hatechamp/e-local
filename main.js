@@ -3,35 +3,70 @@
 var app = new Vue({
     el: '#app',
     data: {
-        search: "",
+        search: '',
         price: 50,
-        discounts: discounts,
-        productList: products,
+        discounts: '',
+        productList: [],
         cartTotal: 0,
         cart: [],
         cartItems: 0,
         saleComplete: false,
         fieldsMissing: true,
         userData: {
-            name: "",
-            address: "",
-            phone: "",
-            email: "",
+            name: '',
+            address: '',
+            phone: '',
+            email: '',
             delivery: false
         },
         active: {
-            'veggie': { status: true },
-            'fruit': { status: false },
-            'meal': { status: false }
+            'verdura': { status: true },
+            'fruta': { status: false },
+            'almacen': { status: false }
         },
         cartHas: {
-            veggie: false,
-            fruit: false,
-            meal: false
+            verdura: false,
+            fruta: false,
+            almacen: false
         }
 
     },
+    mixins: [Vue2Filters.mixin],
+    created: function () {
+        
+        productsRef.on('value', snap => {
+            let products = [];
+            snap.forEach(item => {
+                products.push({
+                    active: item.child('active').val(),
+                    name: item.child('name').val(),
+                    type: item.child('type').val(),
+                    price: item.child('price').val(),
+                    image: item.child('image').val(),
+                    amount: 0
+                }
+                );
+            });
+            this.setProducts(products);
+        });
+
+        let discounts = [
+            { amount: "1", price: 55 },
+            { amount: "2", price: 52.50 },
+            { amount: "3", price: 50 },
+            { amount: "4", price: 47.50 },
+            { amount: "5+", price: 45 }
+            //{ amount: "60 > 200", price: 41 },
+            //{ amount: "200 > 250", price: 36 },
+            //{ amount: "250 >", price: 32 }
+        ]
+
+        this.discounts = discounts;
+    },
     methods: {
+        setProducts: function(products){
+            this.productList = products;
+        },
         getTotal: function () {
 
             var self = this;
@@ -45,20 +80,20 @@ var app = new Vue({
             
 
             for (var item in this.cart) {
-                if (this.cart[item].type == 'fruit') {
+                if (this.cart[item].type == 'fruta') {
                     this.cart[item].total = this.cart[item].amount * this.cart[item].price;
                     this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
-                    this.cartHas.fruit = true;
+                    this.cartHas.fruta = true;
                 }
-                if (this.cart[item].type == 'veggie') {
+                if (this.cart[item].type == 'verdura') {
                     this.cart[item].price = this.price;
                     this.cart[item].total = this.cart[item].amount * this.price;
-                    this.cartHas.veggie = true;
+                    this.cartHas.verdura = true;
                 }
-                if (this.cart[item].type == "meal") {
+                if (this.cart[item].type == "almacen") {
                     this.cart[item].total = this.cart[item].amount * this.cart[item].price;
                     this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
-                    this.cartHas.meal = true;
+                    this.cartHas.almacen = true;
 
                 }
                 this.cartTotal += this.cart[item].total;
@@ -68,7 +103,7 @@ var app = new Vue({
         },
         addItem: function (item) {
             item.amount++;
-            if (item.price && item.type != "veggie") {
+            if (item.price && item.type != "verdura") {
                 item.total = item.amount * item.price;
             } else {
                 item.total = item.amount * this.price;
@@ -81,19 +116,18 @@ var app = new Vue({
             if (item.amount > 0) {
                 item.amount--;
             }
-            if (item.price && item.type != "veggie") {
+            if (item.price && item.type != "verdura") {
                 item.total = item.amount * item.price;
             } else {
-                console.log("Remove Item", this.price, item.price)
                 item.price = this.price;
                 item.total = item.amount * this.price;
             }
             this.getTotal();
         },
         updateValue: function (item) {
-            if (item.amount == "" || parseFloat(item.amount) == NaN) { item.amount = 0 }
+            if (item.amount == '' || parseFloat(item.amount) == NaN) { item.amount = 0 }
             else (item.amount = parseFloat(item.amount))
-            if (item.price) {
+            if (item.price != 0) {
                 item.total = item.amount * item.price;
             } else {
                 item.total = item.amount * this.price;
@@ -103,13 +137,11 @@ var app = new Vue({
         saveSale: function (cart) {
 
             // form validation
-            if (this.userData.name == "" || this.userData.phone == "") {
+            if (this.userData.name == '' || this.userData.phone == '') {
                 this.fieldsMissing = true;
-                console.log(this.fieldsMissing)
             }
-            if (this.userData.delivery == true && this.userData.address == "") {
+            if (this.userData.delivery == true && this.userData.address == '') {
                 this.fieldsMissing = true;
-                console.log(this.fieldsMissing)
             }
             else {
                 this.fieldsMissing = false;
@@ -186,7 +218,7 @@ var app = new Vue({
         },
         //toggle category buttons
         setVisibility: function (type) {
-            this.search = "";
+            this.search = '';
             for (var t in this.active) {
                 this.active[t].status = false;
             }
@@ -205,9 +237,9 @@ var app = new Vue({
         filteredItems: function () {
             var self = this;
             var newList = this.productList.sort().filter(function (item) {
-                return item.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0;
+                return item.name.toLowerCase().indexOf(self.search.toLowerCase()) >= 0 && item.active !== false;
             });
-            if (self.search != "") {
+            if (self.search != '') {
                 for (var t in this.active) {
                     this.active[t].status = false;
                 }
@@ -220,11 +252,11 @@ var app = new Vue({
             input.onkeyup = function () {
                 var key = event.keyCode || event.charCode;
 
-                if (key == 8 || key == 46 && self.search == "") {
+                if (key == 8 || key == 46 && self.search == '') {
                     self.active = {
-                        'veggie': { status: true },
-                        'fruit': { status: false },
-                        'meal': { status: false }
+                        'verdura': { status: true },
+                        'fruta': { status: false },
+                        'almacen': { status: false }
                     }
                 }
             };
@@ -235,3 +267,4 @@ var app = new Vue({
         }
     }
 })
+

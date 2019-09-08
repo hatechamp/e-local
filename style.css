@@ -352,7 +352,7 @@ body {
     text-align: center;
 }
 
-.fruitCart, .mealCart {
+.frutaCart, .almacenCart {
     /* margin-top: 20px; */
     padding: 10px;
     background: #333;
@@ -364,14 +364,14 @@ body {
     max-width: 800px;
 }
 
-.fruitCart .fruits, .mealCart .fruits {
+.frutaCart .frutas, .almacenCart .frutas {
     padding: 10px;
     background: #333;
     color: #00cc65;
     font-size: 25px;
 }
 
-.mealCart .subtitle {
+.almacenCart .subtitle {
     background: #333;
     color: #00cc65;
     font-size: 14px;
@@ -380,7 +380,7 @@ body {
     margin-left: 5px
 }
 
-.fruitCart .fruitCart .subtitle {
+.frutaCart .frutaCart .subtitle {
     background: #333;
     color: #00cc65;
     font-size: 14px;
@@ -603,7 +603,7 @@ body {
     line-height: 20px;
 }
 
-.main .cart .veggieCart {
+.main .cart .verduraCart {
     padding: 10px;
     padding-top: 20px;
     background: #333;
@@ -615,7 +615,7 @@ body {
     max-width: 800px;
 }
 
-.main .cart .veggieCart .veggies {
+.main .cart .verduraCart .verduras {
     padding: 10px;
     background: #333;
     color: #00cc65;

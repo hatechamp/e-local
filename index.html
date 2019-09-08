@@ -27,12 +27,12 @@
                         placeholder="Variedad">
                 </div>
                 <div class="filter">
-                    <a class="button" v-bind:class="{active : active['veggie'].status}"
-                        @click="setVisibility('veggie');">Verduras</a>
-                    <a class="button" v-bind:class="{active : active['fruit'].status}"
-                        @click="setVisibility('fruit');">Frutas</a>
-                    <a class="button" v-bind:class="{active : active['meal'].status}"
-                        @click="setVisibility('meal');">Almacén</a>
+                    <a class="button" v-bind:class="{active : active['verdura'].status}"
+                        @click="setVisibility('verdura');">Verduras</a>
+                    <a class="button" v-bind:class="{active : active['fruta'].status}"
+                        @click="setVisibility('fruta');">Frutas</a>
+                    <a class="button" v-bind:class="{active : active['almacen'].status}"
+                        @click="setVisibility('almacen');">Almacén</a>
                 </div>
             </div>
             <div class="headerDisplay">
@@ -57,10 +57,10 @@
             </div>
         </div>
         <div class="products">
-            <div v-cloak class="item" v-for="item in filteredItems">
-                <img :src="`${item.url}`" class="productImage">
-                <div class="title" v-if="item.type == 'veggie'">{{item.name}} = ${{ price }}</div>
-                <div class="title" v-if="item.type == 'fruit' || item.type == 'meal'">{{item.name}} = ${{ item.price }}
+            <div v-cloak class="item" v-for="item in orderBy(filteredItems, 'name')">
+                <img :src="`images/${item.image}`" class="productImage">
+                <div class="title" v-if="item.type == 'verdura'">{{item.name}} = ${{ price }}</div>
+                <div class="title" v-if="item.type == 'fruta' || item.type == 'almacen'">{{item.name}} = ${{ item.price }}
                 </div>
                 <div class="setAmount">
                     <div class="remove" v-on:click="removeItem(item)">-</div>
@@ -79,11 +79,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="veggieCart" v-if="cartHas.veggie == true" v-cloak>
-                    <div class="veggies">Verduras</div>
+                <div class="verduraCart" v-if="cartHas.verdura == true" v-cloak>
+                    <div class="verduras">Verduras</div>
                     <div class="price">Precio por unidad = ${{this.price}}</div>
-                    <div class="item" v-for="item in cart" v-if="item.type == 'veggie'">
-                        <img :src="`${item.url}`" alt="" class="img">
+                    <div class="item" v-for="item in cart" v-if="item.type == 'verdura'">
+                        <img :src="`images/${item.image}`" alt="" class="img">
                         <div class="itemName">
                             <div class="name">{{item.name}}</div>
                             <div class="itemTotal">
@@ -94,10 +94,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="fruitCart" v-if="cartHas.fruit == true">
-                    <div class="fruits">Frutas</div>
-                    <div class="item" v-for="item in cart" v-if="item.type == 'fruit'">
-                        <img :src="`${item.url}`" alt="" class="img">
+                <div class="frutaCart" v-if="cartHas.fruta == true">
+                    <div class="frutas">Frutas</div>
+                    <div class="item" v-for="item in cart" v-if="item.type == 'fruta'">
+                        <img :src="`images/${item.image}`" alt="" class="img">
                         <div class="itemName">
                             <div class="name">{{item.name}}</div>
                             <div class="itemTotal">
@@ -108,12 +108,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="mealCart" v-if="cartHas.meal == true">
-                    <div class="fruits">Almacen
+                <div class="almacenCart" v-if="cartHas.almacen == true">
+                    <div class="frutas">Almacen
                         <div class="subtitle">Todos estos productos son agroecológicos también</div>
                     </div>
-                    <div class="item" v-for="item in cart" v-if="item.type == 'meal'">
-                        <img :src="`${item.url}`" alt="" class="img">
+                    <div class="item" v-for="item in cart" v-if="item.type == 'almacen'">
+                        <img :src="`images/${item.image}`" alt="" class="img">
                         <div class="itemName">
                             <div class="name">{{item.name}}</div>
                             <div class="itemTotal">
@@ -161,6 +161,7 @@
                 </div>
             </div>
             <div id="replybox"></div>
+            
             <a class="top-link hide" href="" id="js-top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
                     <path d="M12 6H0l6-6z" /></svg>
@@ -186,9 +187,9 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
     <script src="https://cdn.getreplybox.com/js/embed.js"></script>
     <script src="products.js"></script>
-    <script src="main.js"></script>
     <script>
 
         window.replybox = {
@@ -197,17 +198,19 @@
 
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyAKajq835OuZXDij4kZfUT7PjRXzNpVd-U",
-            authDomain: "vrde-club.firebaseapp.com",
-            databaseURL: "https://vrde-club.firebaseio.com",
-            projectId: "vrde-club",
-            storageBucket: "vrde-club.appspot.com",
-            messagingSenderId: "835566805443"
+            apiKey: "AIzaSyCwgdBtHXEyUVLe9yP_la8IrN0qG2SYeFM",
+            authDomain: "vrde-admin.firebaseapp.com",
+            databaseURL: "https://vrde-admin.firebaseio.com",
+            projectId: "vrde-admin",
+            storageBucket: "",
+            messagingSenderId: "549162612019",
+            appId: "1:549162612019:web:8eaa67dae5a1304c43fa46"
         };
 
         firebase.initializeApp(config);
 
         var database = firebase.database();
+        const productsRef = database.ref('products');
 
         //Scroll top on pageload
         window.addEventListener('scroll', function (evt) {
@@ -255,6 +258,7 @@
         }
 
     </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
