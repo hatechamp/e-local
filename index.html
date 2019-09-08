@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:500" rel="stylesheet">
 </head>
-
 <body>
     <div class="main" id="app">
         <div class="top-bar">
@@ -60,7 +58,8 @@
             <div v-cloak class="item" v-for="item in orderBy(filteredItems, 'name')">
                 <img :src="`images/${item.image}`" class="productImage">
                 <div class="title" v-if="item.type == 'verdura'">{{item.name}} = ${{ price }}</div>
-                <div class="title" v-if="item.type == 'fruta' || item.type == 'almacen'">{{item.name}} = ${{ item.price }}
+                <div class="title" v-if="item.type == 'fruta' || item.type == 'almacen'">{{item.name}} =
+                    ${{ item.price }}
                 </div>
                 <div class="setAmount">
                     <div class="remove" v-on:click="removeItem(item)">-</div>
@@ -161,7 +160,7 @@
                 </div>
             </div>
             <div id="replybox"></div>
-            
+
             <a class="top-link hide" href="" id="js-top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
                     <path d="M12 6H0l6-6z" /></svg>
@@ -189,7 +188,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
     <script src="https://cdn.getreplybox.com/js/embed.js"></script>
-    <script src="products.js"></script>
     <script>
 
         window.replybox = {
@@ -214,26 +212,18 @@
 
         //Scroll top on pageload
         window.addEventListener('scroll', function (evt) {
-
             var distance_from_top = document.documentElement.scrollTop
-
             if (distance_from_top === 0) {
                 document.getElementsByClassName("search")[0].classList.remove("fixed");
             }
-
             if (distance_from_top > 50) {
                 document.getElementsByClassName("search")[0].classList.add("fixed");
             }
-
         });
 
-
         const scrollToTopButton = document.getElementById('js-top');
-
         const scrollFunc = () => {
-
             let y = window.scrollY;
-
             if (y > 300) {
                 scrollToTopButton.className = "top-link show";
             } else {
@@ -242,10 +232,8 @@
         };
 
         window.addEventListener("scroll", scrollFunc);
-
         const scrollToTop = () => {
             const c = document.documentElement.scrollTop || document.body.scrollTop;
-
             if (c > 0) {
                 window.requestAnimationFrame(scrollToTop);
                 window.scrollTo(0, c - c / 10);
@@ -260,5 +248,4 @@
     </script>
     <script src="main.js"></script>
 </body>
-
 </html>

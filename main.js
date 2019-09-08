@@ -50,22 +50,23 @@ var app = new Vue({
             this.setProducts(products);
         });
 
-        let discounts = [
-            { amount: "1", price: 55 },
-            { amount: "2", price: 52.50 },
-            { amount: "3", price: 50 },
-            { amount: "4", price: 47.50 },
-            { amount: "5+", price: 45 }
-            //{ amount: "60 > 200", price: 41 },
-            //{ amount: "200 > 250", price: 36 },
-            //{ amount: "250 >", price: 32 }
-        ]
-
-        this.discounts = discounts;
     },
     methods: {
         setProducts: function(products){
             this.productList = products;
+
+            // let discounts = [
+            //     { amount: "1", price: 55 },
+            //     { amount: "2", price: 52.50 },
+            //     { amount: "3", price: 50 },
+            //     { amount: "4", price: 47.50 },
+            //     { amount: "5+", price: 45 }
+            //     //{ amount: "60 > 200", price: 41 },
+            //     //{ amount: "200 > 250", price: 36 },
+            //     //{ amount: "250 >", price: 32 }
+            // ]
+    
+            // this.discounts = discounts;
         },
         getTotal: function () {
 
