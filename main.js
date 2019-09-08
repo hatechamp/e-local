@@ -77,8 +77,6 @@ var app = new Vue({
                 return item.total > 0;
             });
 
-            
-
             for (var item in this.cart) {
                 if (this.cart[item].type == 'fruta') {
                     this.cart[item].total = this.cart[item].amount * this.cart[item].price;
@@ -163,21 +161,25 @@ var app = new Vue({
                     phone: this.userData.phone,
                     email: this.userData.email,
                     delivery: this.userData.delivery,
-                    total: this.cartTotal
+                    total: this.cartTotal,
+                    items:[]
                 }];
 
                 for (var item in cart) {
-                    sale.push({
+                    if(item.price === 0){
+                        item.price = this.price;
+                    }
+                    sale[0].items.push({
                         variedad: cart[item].name,
                         cantidad: cart[item].amount,
-                        precio: cart[item].price || this.price,
+                        precio: cart[item].price,
                         pago: cart[item].total
                     })
                 }
 
                 var self = this;
 
-                database.ref('sales/' + today).push(sale, function (error) {
+                database.ref('sales/').push(sale, function (error) {
                     if (error) {
                         console.log(error)
                     } else {
@@ -185,7 +187,7 @@ var app = new Vue({
                     }
                 });
 
-                database.ref('salesArchive/' + today).push(sale, function (error) {
+                database.ref('salesArchive/').push(sale, function (error) {
                     if (error) {
                         console.log(error)
                     } else {
