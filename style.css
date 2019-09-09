@@ -72,7 +72,9 @@ body {
     margin: 0px;
 }
 
-.text-grey-dark {display:none !important;}
+.text-grey-dark {
+    display: none !important;
+}
 
 .main {
     align-content: center;
@@ -582,7 +584,7 @@ body {
     margin-bottom: 5px;
     max-width: 30100%px;
     line-height: 24px;
-    margin-top: 40px;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -701,6 +703,7 @@ body {
     color: #00cc65;
     flex: 1 100%;
     text-align: center;
+    margin-top: 20px;
 }
 
 .main .cart .confirm {
@@ -714,6 +717,21 @@ body {
     color: white;
     margin: 20px 0px;
     font-size: 20px;
+}
+
+.modal .confirmButton {
+    width: 200px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    display: flex;
+    text-align: center;
+    background-color: #00cc65;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .main .cart .confirmSale {
@@ -743,7 +761,50 @@ body {
     text-decoration: none;
 }
 
-.hideReply{
+.modal {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #333333b0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 10000;
+}
+
+.modal .modalItem {
+    width: 340px;
+    height: 160px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.29);
+    position: relative;
+}
+
+.modal .modalItem .title {
+    font-size: 16px;
+    color: #333;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+.closeModal {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    color: #333;
+    padding: 5px 8px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+}
+
+.hideReply {
     width: 360px;
     height: 100px;
     background-color: white;
@@ -856,15 +917,15 @@ body {
 }
 
 .text-grey-dark {
-    display:none;
+    display: none;
 }
 
 body {
     height: 2000px;
     position: relative;
-  }
-  
-  .intro-copy {
+}
+
+.intro-copy {
     padding: 1em;
     margin: 50vh auto;
     max-width: 15em;
@@ -873,9 +934,9 @@ body {
     font-size: 2em;
     line-height: 1.2;
     text-align: center;
-  }
-  
-  .top-link {
+}
+
+.top-link {
     transition: all .25s ease-in-out;
     position: fixed;
     bottom: 30px;
@@ -890,28 +951,33 @@ body {
     width: 60px;
     height: 60px;
     background-color: #F8F8F8;
-  }
-  .top-link.show {
+}
+
+.top-link.show {
     visibility: visible;
     opacity: 1;
-  }
-  .top-link.hide {
+}
+
+.top-link.hide {
     visibility: hidden;
     opacity: 0;
-  }
-  .top-link svg {
+}
+
+.top-link svg {
     fill: #000;
     width: 24px;
     height: 12px;
-  }
-  .top-link:hover {
+}
+
+.top-link:hover {
     background-color: #E8E8E8;
-  }
-  .top-link:hover svg {
+}
+
+.top-link:hover svg {
     fill: #000000;
-  }
-  
-  .screen-reader-text {
+}
+
+.screen-reader-text {
     position: absolute;
     clip-path: inset(50%);
     margin: -1px;
@@ -922,8 +988,9 @@ body {
     overflow: hidden;
     word-wrap: normal !important;
     clip: rect(1px, 1px, 1px, 1px);
-  }
-  .screen-reader-text:focus {
+}
+
+.screen-reader-text:focus {
     display: block;
     top: 5px;
     left: 5px;
@@ -938,8 +1005,7 @@ body {
     color: #444;
     font-size: 1em;
     clip: auto !important;
-  }
-  
+}
 
 @media (max-width: 380px) {
     .main .products .item {

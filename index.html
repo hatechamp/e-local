@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:500" rel="stylesheet">
 </head>
+
 <body>
     <div class="main" id="app">
-        <div class="top-bar">
+        <!-- <div class="top-bar">
             <div data-netlify-identity-menu></div>
-        </div>
+        </div> -->
         <div class="header">
             <img src="images/logoMainIcon.png" alt="" class="logo">
             <div class="contain">
@@ -57,9 +59,8 @@
         <div class="products">
             <div v-cloak class="item" v-for="item in orderBy(filteredItems, 'name')">
                 <img :src="`images/${item.image}`" class="productImage">
-                <div class="title" v-if="item.type == 'verdura'">{{item.name}} = ${{ price }}</div>
-                <div class="title" v-if="item.type == 'fruta' || item.type == 'almacen'">{{item.name}} =
-                    ${{ item.price }}
+                <div class="title">
+                    {{item.name}} = ${{ item.price }}
                 </div>
                 <div class="setAmount">
                     <div class="remove" v-on:click="removeItem(item)">-</div>
@@ -80,7 +81,6 @@
                 </div>
                 <div class="verduraCart" v-if="cartHas.verdura == true" v-cloak>
                     <div class="verduras">Verduras</div>
-                    <div class="price">Precio por unidad = ${{this.price}}</div>
                     <div class="item" v-for="item in cart" v-if="item.type == 'verdura'">
                         <img :src="`images/${item.image}`" alt="" class="img">
                         <div class="itemName">
@@ -147,10 +147,19 @@
                     <input id="delivery" type="checkbox" v-model="userData.delivery">
                 </div>
             </form>
-            <div class="confirm" v-on:click="saveSale(cart)" v-show="saleComplete == false">Realizar Pedido</div>
-            <div class="confirmSale" v-show="saleComplete == true">
-                Su pedido se ha realizado con exito!
-                <a class="reload" href="/">Realizar otro pedido</a>
+            <div class="confirm" v-on:click="confirmModal = true">Realizar pedido</div>
+            <div class="confirmSale" v-show="confirmModal == true">
+                <div class="modal">
+                    <div class="modalItem" v-show="saleComplete === false">
+                        <div class="closeModal" @click="confirmModal = false">X</div>
+                        <div class="title">Confirmar pedido?</div>
+                        <div class="confirmButton" v-on:click="saveSale(cart)">Confirmar</div>
+                    </div>
+                    <div class="modalItem" v-show="saleComplete === true">
+                        <div class="closeModal" @click="confirmModal = false">X</div>
+                        <div class="title">Gracias! <br /><br /> Su pedido se ha realizado con exito.</div>
+                    </div>
+                </div>
             </div>
             <div class="schedule">
                 <div class="title">
@@ -161,10 +170,9 @@
             </div>
             <div id="replybox"></div>
 
-            <a class="top-link hide" href="" id="js-top">
+            <a class="top-link hide" id="js-top">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
                     <path d="M12 6H0l6-6z" /></svg>
-                <span class="screen-reader-text">Back to top</span>
             </a>
             <div class="footer">
                 <img src="images/logoMainIconOnly.png" alt="" class="footerLogo">
@@ -188,64 +196,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
     <script src="https://cdn.getreplybox.com/js/embed.js"></script>
-    <script>
-
-        window.replybox = {
-            site: 'q8jBQaoBa2',
-        };
-
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCwgdBtHXEyUVLe9yP_la8IrN0qG2SYeFM",
-            authDomain: "vrde-admin.firebaseapp.com",
-            databaseURL: "https://vrde-admin.firebaseio.com",
-            projectId: "vrde-admin",
-            storageBucket: "",
-            messagingSenderId: "549162612019",
-            appId: "1:549162612019:web:8eaa67dae5a1304c43fa46"
-        };
-
-        firebase.initializeApp(config);
-
-        var database = firebase.database();
-        const productsRef = database.ref('products');
-
-        //Scroll top on pageload
-        window.addEventListener('scroll', function (evt) {
-            var distance_from_top = document.documentElement.scrollTop
-            if (distance_from_top === 0) {
-                document.getElementsByClassName("search")[0].classList.remove("fixed");
-            }
-            if (distance_from_top > 50) {
-                document.getElementsByClassName("search")[0].classList.add("fixed");
-            }
-        });
-
-        const scrollToTopButton = document.getElementById('js-top');
-        const scrollFunc = () => {
-            let y = window.scrollY;
-            if (y > 300) {
-                scrollToTopButton.className = "top-link show";
-            } else {
-                scrollToTopButton.className = "top-link hide";
-            }
-        };
-
-        window.addEventListener("scroll", scrollFunc);
-        const scrollToTop = () => {
-            const c = document.documentElement.scrollTop || document.body.scrollTop;
-            if (c > 0) {
-                window.requestAnimationFrame(scrollToTop);
-                window.scrollTo(0, c - c / 10);
-            }
-        };
-
-        scrollToTopButton.onclick = function (e) {
-            e.preventDefault();
-            scrollToTop();
-        }
-
-    </script>
     <script src="main.js"></script>
 </body>
+
 </html>

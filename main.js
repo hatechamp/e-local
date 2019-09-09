@@ -1,5 +1,21 @@
 //vrde.club
 
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCwgdBtHXEyUVLe9yP_la8IrN0qG2SYeFM",
+    authDomain: "vrde-admin.firebaseapp.com",
+    databaseURL: "https://vrde-admin.firebaseio.com",
+    projectId: "vrde-admin",
+    storageBucket: "",
+    messagingSenderId: "549162612019",
+    appId: "1:549162612019:web:8eaa67dae5a1304c43fa46"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+const productsRef = database.ref('products');
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -12,6 +28,7 @@ var app = new Vue({
         cartItems: 0,
         saleComplete: false,
         fieldsMissing: true,
+        confirmModal: false,
         userData: {
             name: '',
             address: '',
@@ -29,11 +46,9 @@ var app = new Vue({
             fruta: false,
             almacen: false
         }
-
     },
     mixins: [Vue2Filters.mixin],
     created: function () {
-        
         productsRef.on('value', snap => {
             let products = [];
             snap.forEach(item => {
@@ -49,27 +64,12 @@ var app = new Vue({
             });
             this.setProducts(products);
         });
-
     },
     methods: {
-        setProducts: function(products){
+        setProducts: function (products) {
             this.productList = products;
-
-            // let discounts = [
-            //     { amount: "1", price: 55 },
-            //     { amount: "2", price: 52.50 },
-            //     { amount: "3", price: 50 },
-            //     { amount: "4", price: 47.50 },
-            //     { amount: "5+", price: 45 }
-            //     //{ amount: "60 > 200", price: 41 },
-            //     //{ amount: "200 > 250", price: 36 },
-            //     //{ amount: "250 >", price: 32 }
-            // ]
-    
-            // this.discounts = discounts;
         },
         getTotal: function () {
-
             var self = this;
             this.cartTotal = 0;
             this.cartItems = 0;
@@ -79,62 +79,44 @@ var app = new Vue({
             });
 
             for (var item in this.cart) {
+
                 if (this.cart[item].type == 'fruta') {
-                    this.cart[item].total = this.cart[item].amount * this.cart[item].price;
-                    this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
                     this.cartHas.fruta = true;
                 }
                 if (this.cart[item].type == 'verdura') {
-                    this.cart[item].price = this.price;
-                    this.cart[item].total = this.cart[item].amount * this.price;
                     this.cartHas.verdura = true;
                 }
                 if (this.cart[item].type == "almacen") {
-                    this.cart[item].total = this.cart[item].amount * this.cart[item].price;
-                    this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
                     this.cartHas.almacen = true;
-
                 }
+
+                this.cart[item].total = this.cart[item].amount * this.cart[item].price;
+                this.cart[item].total = parseFloat(this.cart[item].total.toFixed(2))
+
                 this.cartTotal += this.cart[item].total;
                 this.cartTotal = parseFloat(this.cartTotal.toFixed(2))
             }
-
         },
         addItem: function (item) {
             item.amount++;
-            if (item.price && item.type != "verdura") {
-                item.total = item.amount * item.price;
-            } else {
-                item.total = item.amount * this.price;
-            }
+            item.total = item.amount * item.price;
             this.getTotal();
         },
         removeItem: function (item) {
             this.getTotal();
-
             if (item.amount > 0) {
                 item.amount--;
             }
-            if (item.price && item.type != "verdura") {
-                item.total = item.amount * item.price;
-            } else {
-                item.price = this.price;
-                item.total = item.amount * this.price;
-            }
+            item.total = item.amount * item.price;
             this.getTotal();
         },
         updateValue: function (item) {
             if (item.amount == '' || parseFloat(item.amount) == NaN) { item.amount = 0 }
             else (item.amount = parseFloat(item.amount))
-            if (item.price != 0) {
-                item.total = item.amount * item.price;
-            } else {
-                item.total = item.amount * this.price;
-            }
+            item.total = item.amount * item.price;
             this.getTotal();
         },
         saveSale: function (cart) {
-
             // form validation
             if (this.userData.name == '' || this.userData.phone == '') {
                 this.fieldsMissing = true;
@@ -145,9 +127,7 @@ var app = new Vue({
             else {
                 this.fieldsMissing = false;
             }
-
             if (this.fieldsMissing == false) {
-
                 // send to firebase
                 var today = new Date().toLocaleDateString('es-GB', {
                     day: 'numeric',
@@ -163,11 +143,11 @@ var app = new Vue({
                     email: this.userData.email,
                     delivery: this.userData.delivery,
                     total: this.cartTotal,
-                    items:[]
+                    items: []
                 }];
 
                 for (var item in cart) {
-                    if(item.price === 0){
+                    if (item.price === 0) {
                         item.price = this.price;
                     }
                     sale[0].items.push({
@@ -179,7 +159,6 @@ var app = new Vue({
                 }
 
                 var self = this;
-
                 database.ref('sales/').push(sale, function (error) {
                     if (error) {
                         console.log(error)
@@ -195,30 +174,9 @@ var app = new Vue({
                         self.saleComplete = true;
                     }
                 });
-                
-                
-                // ref.child("users").orderByChild("name").equalTo(sale.name).once("value",snapshot => {
-                //     if (snapshot.exists()){
-                //     const userData = snapshot.val();
-                //       var userReg = {
-                //           name: sale.name,
-                //           address: sale.address,
-                //           phone: sale.phone
-                //       }
-                //       database.ref('users').push(userReg, function(){
-                //           if (error) {
-                //               console.log(error)
-                //           } else {
-                //               console.log('User already exists') 
-                //           }
-                //       })
-                //     } else {
-                //         console.log("exists!", userData);
-                //     }
-                // });
-
             }
         },
+
         //toggle category buttons
         setVisibility: function (type) {
             this.search = '';
@@ -233,9 +191,9 @@ var app = new Vue({
         scrollTop: function () {
             window.scrollTo(0, 0);
         }
-
     },
     computed: {
+
         // returns filtered list by search term or category
         filteredItems: function () {
             var self = this;
@@ -250,8 +208,8 @@ var app = new Vue({
                     self.active[newList[i].type].status = true;
                 }
             }
-            var input = document.getElementById('searchInput');
 
+            var input = document.getElementById('searchInput');
             input.onkeyup = function () {
                 var key = event.keyCode || event.charCode;
 
@@ -270,4 +228,39 @@ var app = new Vue({
         }
     }
 })
+
+window.replybox = {
+    site: 'q8jBQaoBa2',
+};
+
+//Scroll top on pageload
+window.addEventListener('scroll', function (evt) {
+    var distance_from_top = document.documentElement.scrollTop
+    if (distance_from_top === 0) {
+        document.getElementsByClassName("search")[0].classList.remove("fixed");
+        document.getElementById("js-top").classList.add("hide");
+        document.getElementById("js-top").classList.remove("show");
+    }
+    if (distance_from_top > 50) {
+        document.getElementsByClassName("search")[0].classList.add("fixed");
+        document.getElementById("js-top").classList.remove("hide");
+        document.getElementById("js-top").classList.add("show");
+    }
+});
+
+const scrollToTop = () => {
+    console.log("scroll")
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 10);
+    }
+};
+
+document.getElementById("js-top").onclick = function (e) {
+    e.preventDefault();
+    scrollToTop();
+}
+
+
 
