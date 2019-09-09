@@ -794,6 +794,10 @@ body {
     text-align: center;
 }
 
+.activateModal {
+    opacity:1 !important;
+}
+
 .closeModal {
     position: absolute;
     top: 10px;
