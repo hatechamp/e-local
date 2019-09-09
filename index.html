@@ -125,20 +125,20 @@
                 </div>
             </div>
             <div class="cartTotal">Total = ${{cartTotal}}</div>
-            <div class="schedule">
+            <!-- <div class="schedule">
                 <div class="title">
                     ESCANEÁ EL SIGUIENTE CÓDIGO PARA PAGAR CON MERCADO PAGO
                 </div>
                 <img src="images/qr.jpg" alt="" class="logoMainIcon">
-            </div>
+            </div> -->
             <form action="#" class="userForm">
                 <div class="title">Datos de Usuario</div>
                 <div class="required">* Por favor llene los campos requeridos</div>
                 <input class="requiredInput" type="text" placeholder="Nombre" v-model="userData.name" required>
                 <input class="requiredInput" type="tel" placeholder="Telefono" v-model="userData.phone" required>
-                <input class="requiredInput" type="text" placeholder="Direccion" v-model="userData.address"
-                    :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
                 <input type="email" placeholder="Correo" v-model="userData.email" required>
+                <input class="requiredInput" type="text" placeholder="Direccion" v-model="userData.address"
+                :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
                 <div class="delivery">
                     <label for="delivery" value="Retiro en local" class="label" @click="disabled = !disabled">Entrega a
                         tu casa <br>
@@ -161,13 +161,13 @@
                     </div>
                 </div>
             </div>
-            <div class="schedule">
+            <!-- <div class="schedule">
                 <div class="title">
                     <img class="btc" src="images/btc.jpg" alt=""> PAGA CON BITCOIN!
                     <br>
                     <strong style="color:#333;">1DdkCoDbAjPLgdkvQRizmLi438M16piqFB</strong>
                 </div>
-            </div>
+            </div> -->
             <div id="replybox"></div>
 
             <a class="top-link hide" id="js-top">
