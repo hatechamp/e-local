@@ -17,8 +17,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-size: 12px;
     font-family: Ubuntu;
     line-height: 14px;
-    /* border: 1px solid #ececec; */
-    /* max-width: 650px; */
     margin: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -79,7 +77,6 @@ body {
 .main {
     align-content: center;
     justify-content: center;
-    /* max-width: 900px; */
     margin: 0 auto;
 }
 
@@ -161,7 +158,6 @@ body {
     min-width: 110px;
     font-size: 16px;
     font-size: 1em;
-    /* line-height: 1.4; */
 }
 
 .main .search img.searchLabel {
@@ -209,7 +205,6 @@ body {
 
 .filter .button {
     padding: 13px;
-    /* background-color: #9e9e9e33; */
     color: #808080;
     display: flex;
     justify-content: center;
@@ -283,7 +278,6 @@ body {
 }
 
 .userForm input.requiredInput {
-    /* border:0.5px solid red; */
     box-shadow: 0px 0px 1px 0.5px #fe504638;
     border-left: 2px solid #fe5046;
 }
@@ -370,8 +364,6 @@ body {
     background: #fff;
     color: #333;
     padding-bottom: 20px;
-    /* min-width: 90%; */
-    /* max-width: 90%; */
     width: 95%;
     max-width: 800px;
     margin-bottom: 20px;
@@ -381,18 +373,16 @@ body {
 
 .frutaCart .frutas, .almacenCart .frutas {
     padding: 10px;
-    /* background: #333; */
     color: #00cc65;
     font-size: 25px;
 }
 
 .almacenCart .subtitle {
-    background: #333;
     color: #00cc65;
     font-size: 14px;
     padding-top: 10px;
-    color: #ffffff99;
-    margin-left: 5px
+    color: #3d4852;
+    margin-left: 5px;
 }
 
 .frutaCart .frutaCart .subtitle {
@@ -448,7 +438,6 @@ body {
 
 .schedule .logoMainIcon {
     width: auto;
-    /* border: 4px dashed #00000024; */
     padding: 15px;
     margin-top: 13px;
     height: 150px;
@@ -479,7 +468,6 @@ body {
     margin-bottom: 10px;
     max-height: 240px;
     overflow: hidden;
-    /* border: 1px solid rgba(0, 0, 0, 0.15); */
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06);
 }
 
@@ -595,7 +583,6 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     color: #00cc65;
-    /* text-align: left; */
     margin-bottom: 5px;
     max-width: 30100%px;
     line-height: 24px;
@@ -623,11 +610,8 @@ body {
 .main .cart .verduraCart {
     padding: 10px;
     padding-top: 20px;
-    /* background: #333; */
     color: #333;
     padding-bottom: 20px;
-    /* min-width: 90%; */
-    /* max-width: 90%; */
     width: 95%;
     max-width: 800px;
     margin-bottom: 20px;
@@ -637,7 +621,6 @@ body {
 
 .main .cart .verduraCart .verduras {
     padding: 10px;
-    /* background: #333; */
     color: #00cc65;
     font-size: 25px;
 }
@@ -655,21 +638,17 @@ body {
 
 .main .cart .item {
     margin-bottom: 20px;
-    /* padding: 5px; */
     margin: 13px;
     border-bottom: 0.2px solid #ececec;
     font-family: 'Ubuntu', sans-serif;
     padding-bottom: 10px;
-    /* padding-left: 10px; */
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
 }
 
 .main .cart .item .itemName {
     display: flex;
-    /* flex: 1; */
     flex-wrap: wrap;
 }
 
@@ -690,7 +669,6 @@ body {
 
 .main .cart .item .name {
     margin-right: -10px;
-    /* width: 160px; */
     font-size: 14px;
     padding-right: 20px;
     flex: 1;
@@ -712,9 +690,7 @@ body {
 }
 
 .btc {
-    /* position: absolute; */
     width: 50px;
-    /* left: -68px; */
 }
 
 .main .cart .cartTotal {
