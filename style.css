@@ -805,6 +805,7 @@ body {
     align-items: center;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.29);
     position: relative;
+    border-left: 2px solid #00cc65;
 }
 
 .modal .modalItem .title {
@@ -812,6 +813,8 @@ body {
     color: #333;
     padding: 0px 10px;
     text-align: center;
+    position: relative;
+    bottom: 10px;
 }
 
 .activateModal {
@@ -826,6 +829,7 @@ body {
     padding: 5px 8px;
     background-color: #f3f3f3;
     cursor: pointer;
+    z-index: 100000;
 }
 
 .hideReply {

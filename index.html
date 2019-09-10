@@ -138,7 +138,7 @@
                 <input class="requiredInput" type="tel" placeholder="Telefono" v-model="userData.phone" required>
                 <input type="email" placeholder="Correo" v-model="userData.email" required>
                 <input class="requiredInput" type="text" placeholder="Direccion" v-model="userData.address"
-                :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
+                    :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
                 <div class="delivery">
                     <label for="delivery" value="Retiro en local" class="label" @click="disabled = !disabled">Entrega a
                         tu casa <br>
@@ -148,7 +148,8 @@
                 </div>
             </form>
             <div class="confirm" v-on:click="confirmModal = true">Realizar pedido</div>
-            <div class="confirmSale" v-show="confirmModal == true" v-bind:class="{ activateModal: confirmModal == true }" style="opacity: 0;">
+            <div class="confirmSale" v-show="confirmModal == true"
+                v-bind:class="{ activateModal: confirmModal == true }" style="opacity: 0;">
                 <div class="modal">
                     <div class="modalItem" v-show="saleComplete === false">
                         <div class="closeModal" @click="confirmModal = false">X</div>
@@ -157,7 +158,14 @@
                     </div>
                     <div class="modalItem" v-show="saleComplete === true">
                         <div class="closeModal" @click="confirmModal = false">X</div>
-                        <div class="title">Gracias! <br /><br /> Su pedido se ha realizado con exito.</div>
+                        <div class="title">
+                            <h2 style="font-size: 24px;"><img src="images/logoMainIcon.jpg" alt="" height="50px"
+                                    title="" style="position: relative;top: 14px;right: 10px;">
+                                Gracias! :)
+                            </h2>
+                            <br /><br />
+                            Su pedido se ha realizado con exito.
+                        </div>
                     </div>
                 </div>
             </div>
