@@ -27,7 +27,7 @@ var app = new Vue({
         cart: [],
         cartItems: 0,
         saleComplete: false,
-        fieldsMissing: true,
+        fieldsMissing: false,
         confirmModal: false,
         userData: {
             name: '',
@@ -116,65 +116,66 @@ var app = new Vue({
             item.total = item.amount * item.price;
             this.getTotal();
         },
-        saveSale: function (cart) {
+        formValidate() {
             // form validation
             if (this.userData.name == '' || this.userData.phone == '') {
                 this.fieldsMissing = true;
             }
-            if (this.userData.delivery == true && this.userData.address == '') {
+            else if (this.userData.delivery == true && this.userData.address == '') {
                 this.fieldsMissing = true;
             }
             else {
                 this.fieldsMissing = false;
             }
-            if (this.fieldsMissing == false) {
-                // send to firebase
-                var today = new Date().toLocaleDateString('es-GB', {
-                    day: 'numeric',
-                    month: 'numeric',
-                    year: 'numeric'
-                }).split('/').join('-');
+            this.confirmModal = true;
+        },
+        saveSale: function (cart) {
+            // send to firebase
+            var today = new Date().toLocaleDateString('es-GB', {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric'
+            }).split('/').join('-');
 
-                var sale = [{
-                    date: today,
-                    name: this.userData.name,
-                    address: this.userData.address,
-                    phone: this.userData.phone,
-                    email: this.userData.email,
-                    delivery: this.userData.delivery,
-                    total: this.cartTotal,
-                    items: []
-                }];
+            var sale = [{
+                date: today,
+                name: this.userData.name,
+                address: this.userData.address,
+                phone: this.userData.phone,
+                email: this.userData.email,
+                delivery: this.userData.delivery,
+                total: this.cartTotal,
+                items: []
+            }];
 
-                for (var item in cart) {
-                    if (item.price === 0) {
-                        item.price = this.price;
-                    }
-                    sale[0].items.push({
-                        variedad: cart[item].name,
-                        cantidad: cart[item].amount,
-                        precio: cart[item].price,
-                        pago: cart[item].total
-                    })
+            for (var item in cart) {
+                if (item.price === 0) {
+                    item.price = this.price;
                 }
-
-                var self = this;
-                database.ref('sales/').push(sale, function (error) {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        self.saleComplete = true;
-                    }
-                });
-
-                database.ref('salesArchive/').push(sale, function (error) {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        self.saleComplete = true;
-                    }
-                });
+                sale[0].items.push({
+                    variedad: cart[item].name,
+                    cantidad: cart[item].amount,
+                    precio: cart[item].price,
+                    pago: cart[item].total
+                })
             }
+
+            var self = this;
+            database.ref('sales/').push(sale, function (error) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    self.saleComplete = true;
+                }
+            });
+
+            database.ref('salesArchive/').push(sale, function (error) {
+                if (error) {
+                    console.log(error)
+                } else {
+                    self.saleComplete = true;
+                }
+            });
         },
 
         //toggle category buttons

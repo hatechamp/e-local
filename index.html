@@ -147,11 +147,15 @@
                     <input id="delivery" type="checkbox" v-model="userData.delivery">
                 </div>
             </form>
-            <div class="confirm" v-on:click="confirmModal = true">Realizar pedido</div>
+            <div class="confirm" v-on:click="formValidate(cart)">Realizar pedido</div>
             <div class="confirmSale" v-show="confirmModal == true"
                 v-bind:class="{ activateModal: confirmModal == true }" style="opacity: 0;">
                 <div class="modal">
-                    <div class="modalItem" v-show="saleComplete === false">
+                    <div class="modalItem" v-show="saleComplete === false && fieldsMissing === true">
+                        <div class="closeModal" @click="confirmModal = false">X</div>
+                        <div class="title error">Por favor complete los <br> campos requeridos.</div>
+                    </div>
+                    <div class="modalItem" v-show="saleComplete === false && fieldsMissing === false">
                         <div class="closeModal" @click="confirmModal = false">X</div>
                         <div class="title">Confirmar pedido?</div>
                         <div class="confirmButton" v-on:click="saveSale(cart)">Confirmar</div>

@@ -793,6 +793,12 @@ body {
     bottom: 10px;
 }
 
+.modal .modalItem .title.error {
+    border-left: 2px solid #fe5046;
+    text-align:left; 
+}
+
+
 .activateModal {
     opacity:1 !important;
 }
