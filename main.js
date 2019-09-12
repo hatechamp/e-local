@@ -239,13 +239,11 @@ window.addEventListener('scroll', function (evt) {
     var distance_from_top = document.documentElement.scrollTop
     if (distance_from_top === 0) {
         document.getElementsByClassName("search")[0].classList.remove("fixed");
-        document.getElementById("js-top").classList.add("hide");
-        document.getElementById("js-top").classList.remove("show");
+        document.getElementById("js-top").classList.add("hide").remove("show");
     }
     if (distance_from_top > 50) {
         document.getElementsByClassName("search")[0].classList.add("fixed");
-        document.getElementById("js-top").classList.remove("hide");
-        document.getElementById("js-top").classList.add("show");
+        document.getElementById("js-top").classList.remove("hide").add("show");
     }
 });
 
