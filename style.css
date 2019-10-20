@@ -1018,7 +1018,21 @@ body {
     clip: auto !important;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
+    .main .products .item {
+        width: 160px;
+        height:180px;
+        max-width: 250px;
+    }
+    .main .products .item .setAmount {
+        width: 100%;
+    }
+    .main .products .item .amount {
+    width: 55px;
+}
+}
+
+@media (max-width: 340px) {
     .main .products .item {
         width: 95%;
         max-width: 250px;
