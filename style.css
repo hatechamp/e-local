@@ -1078,14 +1078,20 @@ body {
         width: 100%;
     }
     .main .products .item .amount {
-    width: 40%;
-}
-.main .filter.fixed {
-    width: 180px;
-}
+        width: 40%;
+    }
+    .main .filter.fixed {
+        width: 180px;
+    }
 }
 
 @media (max-width: 380px) {
+    .main .filter .button {
+        font-size:0px;
+    }
+}
+
+@media (max-width: 340px) {
     .main .products .item {
         width: 95%;
         max-width: 250px;
