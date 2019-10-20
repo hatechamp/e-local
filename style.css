@@ -383,25 +383,20 @@ a.button.active {}
     flex-wrap: wrap;
 }
 
-.discountTitle {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 22px;
-    color: #00cc65;
-    width: 100%;
-    margin-bottom: 10px;
+.cartTitle {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
+}
+.cartTitle .cartIcon{
+    height: 70px;
+}
+.cartTitle .title{
+    text-align: center;
+    font-size: 30px;
 }
 
-.discountTitle .subtitle {
-    font-size: 14px;
-    color: #808080;
-    line-height: 20px;
-    margin-top: 5px;
-    text-align: center;
-}
 
 .frutaCart, .almacenCart {
     padding: 10px;
