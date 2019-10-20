@@ -180,7 +180,7 @@ var app = new Vue({
 
         //toggle category buttons
         setVisibility: function (type) {
-            const p = document.getElementById("products");
+            let p = document.getElementById("products");
             scrollTo({top: p.offsetTop - 55, behavior:"smooth" });
             this.search = '';
             for (var t in this.active) {
@@ -257,6 +257,10 @@ const scrollToTop = () => {
         window.requestAnimationFrame(scrollToTop);
         window.scrollTo(0, c - c / 10);
     }
+};
+const scrollTopProducts = () => {
+    let p = document.getElementById("products");
+    scrollTo({top: p.offsetTop - 55, behavior:"smooth" });
 };
 
 
