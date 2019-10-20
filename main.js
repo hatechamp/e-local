@@ -181,8 +181,7 @@ var app = new Vue({
         //toggle category buttons
         setVisibility: function (type) {
             const p = document.getElementById("products");
-            scrollTo(document.body, p.offsetTop - 55, 0);
-            console.log("scrolled")
+            scrollTo({top: p.offsetTop - 55, behavior:"smooth" });
             this.search = '';
             for (var t in this.active) {
                 this.active[t].status = false;
@@ -240,12 +239,12 @@ var app = new Vue({
 //Scroll top on pageload
 window.addEventListener('scroll', function (evt) {
     var distance_from_top = document.documentElement.scrollTop
-    if (distance_from_top === 0) {
+    if (distance_from_top < 250) {
         document.getElementsByClassName("search")[0].classList.remove("fixed");
         document.getElementsByClassName("filter")[0].classList.remove("fixed");
         document.getElementById("js-top").classList.add("hide");
     }
-    if (distance_from_top > 50) {
+    if (distance_from_top > 250) {
         document.getElementsByClassName("search")[0].classList.add("fixed");
         document.getElementsByClassName("filter")[0].classList.add("fixed");
         document.getElementById("js-top").classList.remove("hide");
