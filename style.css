@@ -256,9 +256,9 @@ width: 30px;
 .filter .button .filterIcon {
     width:25px;
     height:25px;
-    position:relative; 
+    position:relative;
     bottom:7px;
-    right:10px
+    right: 2px;
 }
 .filter .button:nth-child(2) {
     margin: 0px 10px;
@@ -278,7 +278,7 @@ a.button.active {}
     box-shadow: 0px 3px 6px #33333329;
     border-left: 2px solid #00cc65;
     max-width: 644px;
-    margin: 0px;
+    margin: 0px 10px;
 }
 
 .userForm {
@@ -1062,7 +1062,7 @@ body {
 
 
 @media (max-width: 580px) {
-    .main .search .searchLabel {
+    .main .search.fixed .searchLabel {
         display:none;
     }
 }
@@ -1084,13 +1084,16 @@ body {
 }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 380px) {
     .main .products .item {
         width: 95%;
         max-width: 250px;
     }
     .main .products .item .setAmount {
         width: 100%;
+    }
+    .main .filter .button {
+        font-size:0px;
     }
 }
 
