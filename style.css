@@ -102,7 +102,40 @@ body {
     max-width: 100%;
     z-index: 1000;
     height: 50px;
+    justify-content: flex-start;
 }
+
+.main .filter.fixed {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 230px;
+    max-width: 100%;
+    z-index: 1000;
+    height: 50px;
+}
+
+.main .filter.fixed .button {
+    width: 50px;
+    color:#fff0;
+    background-color:white;
+    font-size: 0px;
+}
+
+.main .filter.fixed .button:nth-child(2) {
+    margin:0px;
+}
+
+.main .filter.fixed .filterIcon {
+
+right: 0px;
+
+height: 30px;
+
+width: 30px;
+}
+
+
 
 .netlify-identity-menu {
     display: flex;
@@ -191,7 +224,7 @@ body {
     margin-top: 10px;
     margin-bottom: 20px;
     margin: 10px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 .filter {
@@ -220,14 +253,23 @@ body {
     border-left: 2px solid #00cc65;
 }
 
+.filter .button .filterIcon {
+    width:25px;
+    height:25px;
+    position:relative; 
+    bottom:7px;
+    right:10px
+}
 .filter .button:nth-child(2) {
     margin: 0px 10px;
 }
 
 .filter .button.active {
     color: white;
-    background-color: #00cc65;
+    background-color: #00cc65 !important;
 }
+
+a.button.active {}
 
 .headerDisplay {
     width: 100%;
@@ -236,7 +278,7 @@ body {
     box-shadow: 0px 3px 6px #33333329;
     border-left: 2px solid #00cc65;
     max-width: 644px;
-    margin: 10px;
+    margin: 0px;
 }
 
 .userForm {
@@ -1018,6 +1060,13 @@ body {
     clip: auto !important;
 }
 
+
+@media (max-width: 580px) {
+    .main .search .searchLabel {
+        display:none;
+    }
+}
+
 @media (max-width: 420px) {
     .main .products .item {
         width: 160px;
@@ -1029,6 +1078,9 @@ body {
     }
     .main .products .item .amount {
     width: 55px;
+}
+.main .filter.fixed {
+    width: 180px;
 }
 }
 

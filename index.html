@@ -28,11 +28,11 @@
                 </div>
                 <div class="filter">
                     <a class="button" v-bind:class="{active : active['verdura'].status}"
-                        @click="setVisibility('verdura');">Verduras</a>
+                        @click="setVisibility('verdura');"><img class="filterIcon" src="images/apple.png">Verduras</a>
                     <a class="button" v-bind:class="{active : active['fruta'].status}"
-                        @click="setVisibility('fruta');">Frutas</a>
+                        @click="setVisibility('fruta');"><img class="filterIcon" src="images/carrot.png">Frutas</a>
                     <a class="button" v-bind:class="{active : active['almacen'].status}"
-                        @click="setVisibility('almacen');">Almacén</a>
+                        @click="setVisibility('almacen');"><img class="filterIcon" src="images/milk.png">Almacén</a>
                 </div>
             </div>
             <div class="headerDisplay">

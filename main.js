@@ -230,20 +230,22 @@ var app = new Vue({
     }
 })
 
-window.replybox = {
-    site: 'q8jBQaoBa2',
-};
+// window.replybox = {
+//     site: 'q8jBQaoBa2',
+// };
 
 //Scroll top on pageload
 window.addEventListener('scroll', function (evt) {
     var distance_from_top = document.documentElement.scrollTop
     if (distance_from_top === 0) {
         document.getElementsByClassName("search")[0].classList.remove("fixed");
-        document.getElementById("js-top").classList.add("hide").remove("show");
+        document.getElementsByClassName("filter")[0].classList.remove("fixed");
+        document.getElementById("js-top").classList.add("hide");
     }
     if (distance_from_top > 50) {
         document.getElementsByClassName("search")[0].classList.add("fixed");
-        document.getElementById("js-top").classList.remove("hide").add("show");
+        document.getElementsByClassName("filter")[0].classList.add("fixed");
+        document.getElementById("js-top").classList.remove("hide");
     }
 });
 
