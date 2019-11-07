@@ -168,7 +168,7 @@ var app = new Vue({
                     self.saleComplete = true;
                 }
             });
-
+            
             database.ref('salesArchive/').push(sale, function (error) {
                 if (error) {
                     console.log(error)
