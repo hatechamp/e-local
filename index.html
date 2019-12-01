@@ -130,17 +130,19 @@
                 <div class="title">Datos de Usuario</div>
                 <div class="required">* Por favor complete los campos requeridos</div>
                 <input class="requiredInput" type="text" placeholder="Nombre" v-model="userData.name" required>
-                <input class="requiredInput" type="tel" placeholder="Telefono" v-model="userData.phone" required>
-                <input type="email" placeholder="Correo" v-model="userData.email" required>
-                <input class="requiredInput" type="text" placeholder="Direccion" v-model="userData.address"
-                    :disabled="userData.delivery == false" v-bind:class="{disabled:userData.delivery == false}">
+                <input class="requiredInput" type="tel" placeholder="Telefono" v-model="userData.phone" required min-length="8">
                 <div class="delivery">
-                    <label for="delivery" value="Retiro en local" class="label" @click="disabled = !disabled">Entrega a
-                        tu casa <br>
-                        <div class="small">* Consulte costo de envio</div>
-                    </label>
-                    <input id="delivery" type="checkbox" v-model="userData.delivery">
-                </div>
+                    <select name="delivery" id="delivery" required="required" class="requiredInput"
+                    @change="changeLocation($event)">
+                    <option value="3" disabled selected>Escoger forma de entrega</option>
+                    <option value="0">Retirar en Anchorena 684, La Lucila</option>
+                    <option value="1">Envio a Domicilio</option>
+                </select>
+            </div>
+            <input class="requiredInput" v-if="userData.delivery == true" type="text" placeholder="Direccion" v-model="userData.address">
+            <div class="deliveryLabel"  v-if="userData.delivery">
+                Costo de flete aprox = 20% de el total del pedido. Ayudanos a reducir el precio del envio compartiendo este link!
+            </div>
             </form>
             <div class="confirm" v-on:click="formValidate(cart)">Realizar pedido</div>
             <div class="confirmSale" v-show="confirmModal == true"
@@ -158,12 +160,14 @@
                     <div class="modalItem" v-show="saleComplete === true">
                         <div class="closeModal" @click="confirmModal = false">X</div>
                         <div class="title">
-                            <h2 style="font-size: 24px;"><img src="images/logoMainIcon.jpg" alt="" height="50px"
-                                    title="" style="position: relative;top: 14px;right: 10px;">
-                                Gracias! :)
-                            </h2>
-                            <br /><br />
-                            Su pedido se ha realizado con exito.
+                            <div v-if="userData.delivery == false">
+                                Gracias!  Su pedido se ha realizado con exito. <br>
+                                Podes retirarlo por el local Viernes o Sabados de 10 a 20 hrs.
+                            </div>
+                            <div v-if="userData.delivery == true">
+                                Gracias!  Su pedido se ha realizado con exito. <br>
+                                Nos estaremos comunicando con vos para coordinar la entrega.
+                            </div>
                         </div>
                     </div>
                 </div>
