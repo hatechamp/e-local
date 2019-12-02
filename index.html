@@ -141,7 +141,12 @@
             </div>
             <input class="requiredInput" v-if="userData.delivery == true" type="text" placeholder="Direccion" v-model="userData.address">
             <div class="deliveryLabel"  v-if="userData.delivery">
-                Costo de flete aprox = 20% de el total del pedido. Ayudanos a reducir el precio del envio compartiendo este link!
+                <h1 style="font-size: 20px;" >Costo promedio</h1> <br>
+                La Lucila = $60 <br>
+               Florida = $100 <br>
+               Nuñez = $120 <br>
+               Saavedra = $140 <br>
+               Martinez = $80 <br>
             </div>
             </form>
             <div class="confirm" v-on:click="formValidate(cart)">Realizar pedido</div>
