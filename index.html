@@ -139,7 +139,7 @@
                     <option value="1">Envio a Domicilio</option>
                 </select>
             </div>
-            <input class="requiredInput" v-if="userData.delivery == true" type="text" placeholder="Direccion" v-model="userData.address">
+            <input class="requiredInput" v-model="userData.address" v-if="userData.delivery == true" type="text" placeholder="Direccion" v-model="userData.address">
             <div class="deliveryLabel"  v-if="userData.delivery">
                 <h1 style="font-size: 20px;" >Costo promedio</h1> <br>
                 La Lucila = $60 <br>

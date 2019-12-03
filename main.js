@@ -134,8 +134,10 @@ var app = new Vue({
         changeLocation(event) {
             if(event.target.value === "0"){
                 this.userData.delivery = false;
+                this.userData.address = "Retira por el Local";
             } else {
                 this.userData.delivery = true;
+                this.userData.address = "";
             }
             this.deliveryMethod = true; 
         },
