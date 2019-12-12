@@ -322,6 +322,7 @@ a.button.active {}
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
+    height: 40px;
 }
 
 .userForm .required {
