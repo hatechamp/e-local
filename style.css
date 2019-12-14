@@ -26,6 +26,38 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     /* border-radius: 20px; */
 }
 
+.totalFloat {
+    
+position: fixed;
+    
+bottom: 20px;
+    
+left: 20px;
+    
+color: black;
+    
+padding: 20px;
+    
+font-size: 20px;
+    
+box-shadow: 0px 3px 6px #33333329;
+    
+border-left: 2px solid #00cc65;
+    
+font-family: Ubuntu;
+    
+border-radius: 15px;
+    
+background-color: white;
+    
+z-index: 1;
+}
+
+
+.totalFloat.hide {
+    display:none;
+}
+
 html {
     box-sizing: border-box;
 }
